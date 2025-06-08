@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://frwoanb6fsy4"]
+
+[ext_resource type="Texture2D" uid="uid://cwiy2b0ybie8n" path="res://game/rooms/shared/door.svg" id="1_4ha3p"]
+
+[node name="Door" type="Sprite2D"]
+texture = ExtResource("1_4ha3p")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://baxkibvbdaupg"]
+
+[ext_resource type="Texture2D" uid="uid://c2cwe6ko81cxd" path="res://game/rooms/shared/color_rect.svg" id="1_8eo4c"]
+[ext_resource type="PackedScene" uid="uid://dpiojq37ufg3k" path="res://game/actors/player/player.tscn" id="3_rv5yv"]
+[ext_resource type="PackedScene" uid="uid://frwoanb6fsy4" path="res://game/rooms/shared/door.tscn" id="4_8eo4c"]
+[ext_resource type="PackedScene" uid="uid://cm1pm0j275dr3" path="res://game/rooms/ui/infos.tscn" id="5_lmpwp"]
+
+[node name="Bedroom" type="Node2D"]
+
+[node name="walls" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="wall" type="Sprite2D" parent="walls"]
+modulate = Color(0.388235, 0.396078, 1, 1)
+position = Vector2(590, 223)
+scale = Vector2(14.6548, 5.54762)
+texture = ExtResource("1_8eo4c")
+
+[node name="ground" type="Sprite2D" parent="walls"]
+modulate = Color(0.19315, 6.95008e-05, 0.703218, 1)
+position = Vector2(596, 548.5)
+scale = Vector2(14.6548, 2.58333)
+texture = ExtResource("1_8eo4c")
+
+[node name="furnitures" type="Node2D" parent="."]
+
+[node name="Door" parent="furnitures" instance=ExtResource("4_8eo4c")]
+position = Vector2(592, 248)
+
+[node name="Player" parent="." instance=ExtResource("3_rv5yv")]
+position = Vector2(392, 440)
+
+[node name="infos" parent="." instance=ExtResource("5_lmpwp")]
+side = "right"
+targetPathTop = "res://game/rooms/bedroom.tscn"
+targetPathBottom = "res://game/rooms/bedroom_down.tscn"
+targetPathLeft = "res://game/rooms/bedroom_left.tscn"
+targetPathRight = "res://game/rooms/bedroom_right.tscn"

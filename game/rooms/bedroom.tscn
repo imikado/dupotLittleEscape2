@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmb5uy2468gyr"]
+
+[ext_resource type="Texture2D" uid="uid://c2cwe6ko81cxd" path="res://game/rooms/shared/color_rect.svg" id="1_a4oly"]
+[ext_resource type="PackedScene" uid="uid://7koqb5oqfne0" path="res://game/rooms/bedroom/bed.tscn" id="2_tnt3m"]
+[ext_resource type="PackedScene" uid="uid://chi4l1ine6ipd" path="res://game/rooms/bedroom/bedside_table.tscn" id="3_a4oly"]
+[ext_resource type="PackedScene" uid="uid://cm1pm0j275dr3" path="res://game/rooms/ui/infos.tscn" id="6_mxlwq"]
+[ext_resource type="PackedScene" uid="uid://dpiojq37ufg3k" path="res://game/actors/player/player.tscn" id="6_rvnao"]
+
+[node name="Bedroom" type="Node2D"]
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="wall" type="Sprite2D" parent="walls"]
+modulate = Color(0.388235, 0.396078, 1, 1)
+position = Vector2(590, 180.5)
+scale = Vector2(14.6548, 4.53571)
+texture = ExtResource("1_a4oly")
+
+[node name="ground" type="Sprite2D" parent="walls"]
+modulate = Color(0.19315, 6.95008e-05, 0.703218, 1)
+position = Vector2(596, 464)
+scale = Vector2(14.6548, 4.59524)
+texture = ExtResource("1_a4oly")
+
+[node name="furnitures" type="Node2D" parent="."]
+
+[node name="Bed" parent="furnitures" instance=ExtResource("2_tnt3m")]
+position = Vector2(544, 312)
+scale = Vector2(0.8, 0.8)
+
+[node name="BedsideTable" parent="furnitures" instance=ExtResource("3_a4oly")]
+position = Vector2(224, 240)
+scale = Vector2(0.8, 0.8)
+
+[node name="BedsideTable2" parent="furnitures" instance=ExtResource("3_a4oly")]
+position = Vector2(864, 248)
+scale = Vector2(0.8, 0.8)
+
+[node name="Player" parent="." instance=ExtResource("6_rvnao")]
+position = Vector2(312, 488)
+
+[node name="infos" parent="." instance=ExtResource("6_mxlwq")]
+side = "top"
+targetPathTop = "res://game/rooms/bedroom.tscn"
+targetPathBottom = "res://game/rooms/bedroom_down.tscn"
+targetPathLeft = "res://game/rooms/bedroom_left.tscn"
+targetPathRight = "res://game/rooms/bedroom_right.tscn"

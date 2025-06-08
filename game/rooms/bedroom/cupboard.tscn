@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dufkbns2nnii7"]
+
+[ext_resource type="Texture2D" uid="uid://c6rjxdu0tas3" path="res://game/rooms/bedroom/cupboard.svg" id="1_enc72"]
+
+[node name="Cupboard" type="Sprite2D"]
+texture = ExtResource("1_enc72")
