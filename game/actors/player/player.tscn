@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpiojq37ufg3k"]
+[gd_scene load_steps=7 format=3 uid="uid://dpiojq37ufg3k"]
 
 [ext_resource type="Script" uid="uid://dhtlqk5w65yrm" path="res://game/actors/player/player.gd" id="1_28fbu"]
 [ext_resource type="Texture2D" uid="uid://dgbkft3kcq6eq" path="res://game/actors/player/player_idle.svg" id="1_c7hf2"]
+[ext_resource type="PackedScene" uid="uid://dmdxdwcagf5nw" path="res://game/ui/player_prompt.tscn" id="3_em52k"]
 
 [sub_resource type="Animation" id="Animation_em52k"]
 length = 0.001
@@ -101,3 +102,9 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 &"": SubResource("AnimationLibrary_p81wk")
 }
+
+[node name="PlayerPrompt" parent="." instance=ExtResource("3_em52k")]
+offset_left = 136.0
+offset_top = -112.0
+offset_right = 136.0
+offset_bottom = -112.0

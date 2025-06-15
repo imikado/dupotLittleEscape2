@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://7koqb5oqfne0"]
+[gd_scene load_steps=3 format=3 uid="uid://7koqb5oqfne0"]
 
 [ext_resource type="Texture2D" uid="uid://d0ns5pvfl50il" path="res://game/rooms/bedroom/bed.svg" id="1_oaiff"]
+[ext_resource type="Script" uid="uid://bymv6vgv365ex" path="res://game/rooms/bedroom/bed.gd" id="2_y8pkj"]
 
 [node name="Bed" type="Sprite2D"]
 texture = ExtResource("1_oaiff")
+script = ExtResource("2_y8pkj")

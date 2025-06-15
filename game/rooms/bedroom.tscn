@@ -24,17 +24,20 @@ texture = ExtResource("1_a4oly")
 
 [node name="furnitures" type="Node2D" parent="."]
 
-[node name="Bed" parent="furnitures" instance=ExtResource("2_tnt3m")]
+[node name="Bed" parent="furnitures" node_paths=PackedStringArray("player") instance=ExtResource("2_tnt3m")]
 position = Vector2(544, 312)
 scale = Vector2(0.8, 0.8)
+player = NodePath("../../Player")
 
-[node name="BedsideTable" parent="furnitures" instance=ExtResource("3_a4oly")]
+[node name="BedsideTable" parent="furnitures" node_paths=PackedStringArray("player") instance=ExtResource("3_a4oly")]
 position = Vector2(224, 240)
 scale = Vector2(0.8, 0.8)
+player = NodePath("../../Player")
 
-[node name="BedsideTable2" parent="furnitures" instance=ExtResource("3_a4oly")]
+[node name="BedsideTable2" parent="furnitures" node_paths=PackedStringArray("player") instance=ExtResource("3_a4oly")]
 position = Vector2(864, 248)
 scale = Vector2(0.8, 0.8)
+player = NodePath("../../Player")
 
 [node name="Player" parent="." instance=ExtResource("6_rvnao")]
 position = Vector2(312, 488)
