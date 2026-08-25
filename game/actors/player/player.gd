@@ -14,6 +14,8 @@ class_name Player
 }
 
 @onready var actionGrid:GridContainer=$HUD/CanvasLayer/Panel/MarginContainer/ActionGridContainer
+@onready var panel=$PanelContainer
+@onready var panel_label=$PanelContainer/MarginContainer/Label
 
 var button_list: Dictionary[String,Button]
 
@@ -32,7 +34,18 @@ func _ready() -> void:
 	stop_move()
 	
 	load_action_button_list()
+	
+	panel.visible=false
+	
+	GlobalEvents.player_say.connect(say)
 
+func say(message:String):
+	panel.visible=true
+	panel_label.text=message
+	
+	await get_tree().create_timer(2.0).timeout
+	panel.visible=false
+	
 
 func _input(event: InputEvent) -> void:
 		

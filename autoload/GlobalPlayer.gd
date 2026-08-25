@@ -7,8 +7,21 @@ const ACTION_USE="action_use"
 const ACTION_TAKE="action_take"
 const ACTION_WALK="action_walk"
 
+const ITEM_BEDROOM_KEY="item_bedroom_key"
+
+var _inventory_list:Array[String]=[]
+
 var _global_position:Vector2=Vector2.ZERO
 var _state_value_list:Dictionary={}
+
+func add_item_in_inventory(item:String):
+	_inventory_list.append(item)
+	
+func has_item_in_inventory(item:String)->bool:
+	return _inventory_list.has(item)
+
+func get_item_list_in_inventory()->Array[String]:
+	return _inventory_list
 
 func set_global_position(global_position:Vector2):
 	_global_position=global_position

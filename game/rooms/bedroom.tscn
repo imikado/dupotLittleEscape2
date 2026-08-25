@@ -104,7 +104,6 @@ position = Vector2(-131, 25)
 
 [node name="Player" parent="." unique_id=1969420018 instance=ExtResource("6_rvnao")]
 position = Vector2(136, 272)
-speed = 2000.0
 action_list = Dictionary[String, bool]({
 "action_close": true,
 "action_observe": true,

@@ -30,10 +30,16 @@ func _process(_delta: float) -> void:
 	pass
 
 func open_drawer():
+	if opened:
+		GlobalEvents.player_say.emit("Already opened")
+		return
 	animationPlayer.play(ANIM_OPEN)
 	opened = true
 
 func close_drawer():
+	if not opened:
+		GlobalEvents.player_say.emit("Already closed")
+		return
 	animationPlayer.play(ANIM_CLOSE)
 	opened = false
 
@@ -41,7 +47,7 @@ func close_drawer():
 	
 func on_action_selected(action:String):
 	if action==GlobalPlayer.ACTION_OPEN:
-		open_drawer()
+		return open_drawer()
 	elif action==GlobalPlayer.ACTION_CLOSE:
-		close_drawer()
-	pass
+		return close_drawer()
+	GlobalEvents.player_say.emit("I don't think so")

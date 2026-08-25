@@ -32,7 +32,7 @@ func start_selection(action:String):
 	selection_tween = create_tween().set_loops()
 	
 	# Teinte le sprite en rouge (ou n'importe quelle autre couleur) en 0.3 sec
-	selection_tween.tween_property(sprite, "modulate", Color.GREEN, 0.3)
+	selection_tween.tween_property(sprite, "modulate", Color.GRAY, 0.3)
 	# Revient à la couleur d'origine (blanc neutre) en 0.3 sec
 	selection_tween.tween_property(sprite, "modulate", Color.WHITE, 0.3)
 
@@ -44,4 +44,4 @@ func stop_selection():
 		sprite.modulate = Color.WHITE
 	
 func on_action_selected(action:String):
-	pass
+	GlobalEvents.player_say.emit("I don't think so")

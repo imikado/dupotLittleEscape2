@@ -81,14 +81,54 @@ tracks/2/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_6grd0"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_4ha3p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6grd0"]
 _data = {
 &"RESET": SubResource("Animation_23odk"),
-&"closed": SubResource("Animation_n35ds")
+&"closed": SubResource("Animation_n35ds"),
+&"open": SubResource("Animation_6grd0")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23odk"]
-size = Vector2(26, 27)
+size = Vector2(72, 96)
 
 [node name="door" type="Node2D" unique_id=1373127259 node_paths=PackedStringArray("sprite", "area_2d")]
 script = ExtResource("1_23odk")
@@ -107,5 +147,5 @@ hframes = 5
 [node name="SelectionArea2D" type="Area2D" parent="." unique_id=68486600]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea2D" unique_id=522759806]
-position = Vector2(1, 5.5)
+position = Vector2(-4, 24)
 shape = SubResource("RectangleShape2D_23odk")
