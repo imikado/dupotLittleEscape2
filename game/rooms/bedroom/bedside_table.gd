@@ -1,37 +1,47 @@
-extends AbstractFurniture
+extends FurnitureAbstract
+
+const ANIM_OPEN = 'open'
+const ANIM_CLOSE = 'close'
+
+#@export var item_in_drawer: Node2D = null
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
+@onready var alarmClock: AnimatedSprite2D = $alarmClock
 
 var opened: bool = false
 
-func open_drawer():
-	opened = true
-	animationPlayer.play('open_drawer');
+@export var has_alarm_clock: bool = false
 
-	player.close_prompt()
+var player: Player = null
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	super()
+	alarmClock.visible = has_alarm_clock
+	if has_alarm_clock:
+		alarmClock.play()
+	pass # Replace with function body.
+
+func stop_clock_animation():
+	alarmClock.play("empty")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+
+func open_drawer():
+	animationPlayer.play(ANIM_OPEN)
+	opened = true
 
 func close_drawer():
+	animationPlayer.play(ANIM_CLOSE)
 	opened = false
-	animationPlayer.play('close_drawer');
 
-	player.close_prompt()
 
-func observe():
-	print('observe')
-	player.close_prompt()
-
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if GlobalInput.isEventMousePressed(event):
-		if opened:
-			player.start_prompt()
-			player.add_choice('close', close_drawer)
-			player.add_choice('observe', observe)
-			player.add_choice('observe', observe)
-
-			player.show_prompt()
-		else:
-			player.start_prompt()
-			player.add_choice('open', open_drawer)
-			player.add_choice('observe', observe)
-			player.show_prompt()
-	pass # Replace with function body.
+	
+func on_action_selected(action:String):
+	if action==GlobalPlayer.ACTION_OPEN:
+		open_drawer()
+	elif action==GlobalPlayer.ACTION_CLOSE:
+		close_drawer()
+	pass

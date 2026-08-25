@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dr47ia3kf8xfc"]
+
+[ext_resource type="Texture2D" uid="uid://cpwqxukl8pp8" path="res://game/rooms/bedroom/alarmClock_idle.png" id="1_vrse3"]
+[ext_resource type="Texture2D" uid="uid://bs2cb40rfb0q3" path="res://game/rooms/bedroom/alarmClock_empty.png" id="2_2lq3v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lq3v"]
+atlas = ExtResource("1_vrse3")
+region = Rect2(0, 0, 15, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvxs1"]
+atlas = ExtResource("1_vrse3")
+region = Rect2(15, 0, 15, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms1n8"]
+atlas = ExtResource("2_2lq3v")
+region = Rect2(0, 0, 15, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvqu4"]
+atlas = ExtResource("2_2lq3v")
+region = Rect2(15, 0, 15, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ms1n8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lq3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvxs1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ms1n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvqu4")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 1.0
+}]
+
+[node name="alarmClock" type="AnimatedSprite2D" unique_id=239177879]
+sprite_frames = SubResource("SpriteFrames_ms1n8")
+animation = &"empty"

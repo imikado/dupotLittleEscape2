@@ -1,22 +1,104 @@
-extends Node2D
+extends CharacterBody2D
 class_name Player
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
-@onready var playerPrompt: PlayerPrompt = $PlayerPrompt
+
+@export var speed: float = 2000.0
+@export var action_list: Dictionary[String, bool] = {
+	GlobalPlayer.ACTION_OPEN: false,
+	GlobalPlayer.ACTION_CLOSE: false,
+	GlobalPlayer.ACTION_OBSERVE: false,
+	GlobalPlayer.ACTION_TAKE: false,
+	GlobalPlayer.ACTION_USE: false,
+	GlobalPlayer.ACTION_WALK:false
+}
+
+@onready var actionGrid:GridContainer=$HUD/CanvasLayer/Panel/MarginContainer/ActionGridContainer
+
+var button_list: Dictionary[String,Button]
+
+var target_mouse_position = Vector2.ZERO
+var physics_paused: bool = false
+
+var stopping_distance: float = 2.0
+
+var can_move = false
+
+var button_enabled:String=''
 
 func _ready() -> void:
+	target_mouse_position=global_position
 	animationPlayer.play('idle')
-	playerPrompt.reset()
+	stop_move()
+	
+	load_action_button_list()
 
 
-func start_prompt():
-	playerPrompt.start()
+func _input(event: InputEvent) -> void:
+		
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if(!can_move):
+			return
+		target_mouse_position = get_global_mouse_position()
+		
+		print("target_mouse")
+ 
+func enable_move():
+	can_move = true
 
-func add_choice(label: String, action: Callable):
-	playerPrompt.add_choice(label, action)
+func disable_move():
+	can_move = false
 
-func show_prompt():
-	playerPrompt.display()
+func _physics_process(delta: float) -> void:
 
-func close_prompt():
-	playerPrompt.close()
+	var distance_to_target: float = global_position.distance_to(target_mouse_position)
+		
+	if distance_to_target > stopping_distance:
+		var direction: Vector2 = global_position.direction_to(target_mouse_position)
+		velocity = direction * speed * delta
+	else:
+		velocity = Vector2.ZERO
+
+	move_and_slide()
+
+func stop_move():
+	disable_move()
+	target_mouse_position = global_position
+	
+func load_action_button_list()->void:
+	
+	remove_all_children(actionGrid)
+	
+	for action_key_loop in action_list:
+		if action_list[action_key_loop]:
+			var new_button_loop:Button = Button.new()
+			new_button_loop.toggle_mode=true
+			new_button_loop.text=GlobalI18n.translate(action_key_loop)
+			new_button_loop.pressed.connect(start_action.bind(action_key_loop))
+			actionGrid.add_child(new_button_loop)
+			
+			button_list[action_key_loop]=new_button_loop
+
+func refresh_action_button_list()->void:
+	for action_button_loop:Button in actionGrid.get_children():
+		action_button_loop.button_pressed=false
+
+func start_action(action_name:String):
+	refresh_action_button_list()
+	
+	var button_clicked:Button=button_list[action_name]
+	button_clicked.button_pressed=true
+	
+	#button_enabled=action_name
+	
+	GlobalEvents.start_action.emit(action_name)
+	
+	if action_name == GlobalPlayer.ACTION_WALK:
+		enable_move()
+	else:
+		stop_move()
+	
+func remove_all_children(object:Node)->void:
+	var children=object.get_children()
+	for child_loop in children:
+		child_loop.queue_free()

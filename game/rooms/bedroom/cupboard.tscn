@@ -1,6 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://dufkbns2nnii7"]
+[gd_scene format=3 uid="uid://boat3h7ktttq5"]
 
-[ext_resource type="Texture2D" uid="uid://c6rjxdu0tas3" path="res://game/rooms/bedroom/cupboard.svg" id="1_enc72"]
+[ext_resource type="Texture2D" uid="uid://dyn3gua2osgq6" path="res://game/rooms/bedroom/furnitures.png" id="1_enc72"]
+[ext_resource type="Script" uid="uid://bm52bj8fa347c" path="res://game/rooms/bedroom/cupboard.gd" id="1_xicjv"]
 
-[node name="Cupboard" type="Sprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enc72"]
+size = Vector2(108, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xicjv"]
+size = Vector2(112, 111)
+
+[node name="Cupboard" type="Node2D" unique_id=1262327595 node_paths=PackedStringArray("sprite", "area_2d")]
+script = ExtResource("1_xicjv")
+sprite = NodePath("Furnitures")
+area_2d = NodePath("SelectionArea2D")
+
+[node name="Furnitures" type="Sprite2D" parent="." unique_id=631172059]
+position = Vector2(0, 9)
 texture = ExtResource("1_enc72")
+region_enabled = true
+region_rect = Rect2(392, 104, 120, 136)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1843709437]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1149294400]
+position = Vector2(1, 58)
+shape = SubResource("RectangleShape2D_enc72")
+
+[node name="SelectionArea2D" type="Area2D" parent="." unique_id=601044898]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea2D" unique_id=1563876911]
+position = Vector2(-1, 13.5)
+shape = SubResource("RectangleShape2D_xicjv")

@@ -1,8 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://7koqb5oqfne0"]
+[gd_scene format=3 uid="uid://g72hnki1n153"]
 
-[ext_resource type="Texture2D" uid="uid://d0ns5pvfl50il" path="res://game/rooms/bedroom/bed.svg" id="1_oaiff"]
-[ext_resource type="Script" uid="uid://bymv6vgv365ex" path="res://game/rooms/bedroom/bed.gd" id="2_y8pkj"]
+[ext_resource type="Texture2D" uid="uid://dyn3gua2osgq6" path="res://game/rooms/bedroom/furnitures.png" id="1_oaiff"]
+[ext_resource type="Script" uid="uid://bhho4t1h2w1ky" path="res://game/rooms/bedroom/bed.gd" id="1_y8pkj"]
 
-[node name="Bed" type="Sprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oaiff"]
+size = Vector2(99, 87)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8pkj"]
+size = Vector2(99, 110)
+
+[node name="Bed" type="Node2D" unique_id=1980249435 node_paths=PackedStringArray("sprite", "area_2d")]
+script = ExtResource("1_y8pkj")
+sprite = NodePath("Furnitures")
+area_2d = NodePath("SelectionArea2D")
+
+[node name="Furnitures" type="Sprite2D" parent="." unique_id=1941946103]
+position = Vector2(24, 24)
 texture = ExtResource("1_oaiff")
-script = ExtResource("2_y8pkj")
+region_enabled = true
+region_rect = Rect2(216, 160, 112, 112)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1589074891]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=163578021]
+position = Vector2(21.5, 33.5)
+shape = SubResource("RectangleShape2D_oaiff")
+
+[node name="SelectionArea2D" type="Area2D" parent="." unique_id=135401375]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea2D" unique_id=1478855119]
+position = Vector2(21.5, 23)
+shape = SubResource("RectangleShape2D_y8pkj")

@@ -1,5 +1,5 @@
 extends Control
-class_name PlayerPrompt
+class_name PlayerPromptOfff
 
 @onready var panel: Panel = $Panel
 @onready var panelContainer: VBoxContainer = $Panel/MarginContainer/VBoxContainer

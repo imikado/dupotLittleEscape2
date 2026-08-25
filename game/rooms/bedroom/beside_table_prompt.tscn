@@ -1,0 +1,282 @@
+[gd_scene format=3 uid="uid://bc18gpl3ot1y0"]
+
+[ext_resource type="Script" uid="uid://dmgyd8dx6ecvo" path="res://game/rooms/bedroom/beside_table_prompt.gd" id="1_0r3w2"]
+[ext_resource type="FontFile" uid="uid://covkcohgnc0m5" path="res://game/ui/assets/Pixeled.ttf" id="3_7q3wo"]
+[ext_resource type="Theme" uid="uid://btpp4jwtg0cw4" path="res://game/ui/pixel_theme.tres" id="4_fvk2k"]
+[ext_resource type="Texture2D" uid="uid://c8k15lp11wepr" path="res://game/rooms/bedroom/bedsideTable_open.png" id="5_7i37e"]
+[ext_resource type="Texture2D" uid="uid://beabwntyx10p1" path="res://game/ui/assets/ui_items.png" id="5_rci8h"]
+[ext_resource type="PackedScene" uid="uid://dr47ia3kf8xfc" path="res://game/rooms/bedroom/alarm_clock.tscn" id="6_7xse7"]
+[ext_resource type="Texture2D" uid="uid://dyn3gua2osgq6" path="res://game/rooms/bedroom/furnitures.png" id="7_8ilk6"]
+
+[sub_resource type="Theme" id="Theme_gmeyo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7i37e"]
+texture = ExtResource("5_rci8h")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(8, 6, 68, 42)
+
+[sub_resource type="Animation" id="Animation_g4s5b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Furnitures:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_7i37e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Furnitures:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Furnitures:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ept6j"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Furnitures:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_7i37e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Furnitures:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Furnitures:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.56666666, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_62j1q"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Furnitures:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_8ilk6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Furnitures:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Furnitures:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4j8hk"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Furnitures:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_7i37e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Furnitures:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Furnitures:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.56666666, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hr63"]
+_data = {
+&"RESET": SubResource("Animation_g4s5b"),
+&"close": SubResource("Animation_ept6j"),
+&"idle": SubResource("Animation_62j1q"),
+&"open": SubResource("Animation_4j8hk")
+}
+
+[node name="BesideTablePrompt" type="Control" unique_id=1440567677]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0r3w2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=263815188]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1865720742]
+offset_left = 63.0
+offset_top = 44.0
+offset_right = 89.0
+offset_bottom = 62.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=570820062]
+offset_left = 91.0
+offset_top = 44.0
+offset_right = 121.0
+offset_bottom = 62.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer" unique_id=520641005]
+offset_left = 78.0
+offset_top = 52.0
+offset_right = 108.0
+offset_bottom = 54.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=6820727]
+offset_left = 65.0
+offset_top = 32.0
+offset_right = 123.0
+offset_bottom = 67.0
+theme = SubResource("Theme_gmeyo")
+theme_override_colors/font_color = Color(0.7628447, 0.10148042, 0.02830993, 1)
+theme_override_fonts/font = ExtResource("3_7q3wo")
+theme_override_font_sizes/font_size = 12
+text = "00  00"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=453336715]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 170.0
+offset_top = -180.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_fvk2k")
+theme_override_styles/panel = SubResource("StyleBoxTexture_7i37e")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel" unique_id=1525074961]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer" unique_id=364671332]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer" unique_id=605525351]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=862788063]
+wait_time = 60.0
+one_shot = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1018858175]
+
+[node name="Furnitures" type="Sprite2D" parent="Node2D" unique_id=1990463488]
+position = Vector2(85.80001, 154.70001)
+scale = Vector2(6.600001, 6.600001)
+texture = ExtResource("5_7i37e")
+hframes = 4
+region_rect = Rect2(336, 160, 32, 24)
+
+[node name="alarmClock" parent="Node2D" unique_id=239177879 instance=ExtResource("6_7xse7")]
+position = Vector2(83.00001, 40.700005)
+scale = Vector2(6.600001, 6.600001)
+frame_progress = 0.7790824
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" unique_id=695846637]
+libraries/ = SubResource("AnimationLibrary_3hr63")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

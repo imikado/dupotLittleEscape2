@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cx2s4ovf3m48d"]
+
+[ext_resource type="Texture2D" uid="uid://beabwntyx10p1" path="res://game/ui/assets/ui_items.png" id="1_qfl41"]
+[ext_resource type="Script" uid="uid://cn5qygfoa0nop" path="res://game/ui/prompt.gd" id="1_w6ab7"]
+[ext_resource type="Theme" uid="uid://btpp4jwtg0cw4" path="res://game/ui/pixel_theme.tres" id="2_theme"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w6ab7"]
+texture = ExtResource("1_qfl41")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(8, 6, 68, 42)
+
+[node name="Prompt" type="Control" unique_id=285265368]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_w6ab7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=84440565]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=2064789811]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -80.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_theme")
+theme_override_styles/panel = SubResource("StyleBoxTexture_w6ab7")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel" unique_id=1473524307]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer" unique_id=89510290]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer" unique_id=487447126]
+layout_mode = 2
