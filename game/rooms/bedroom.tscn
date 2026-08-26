@@ -70,6 +70,7 @@ position = Vector2(-349, 65)
 
 [node name="BedsideTable" parent="furnitures" unique_id=1810283172 instance=ExtResource("3_a4oly")]
 position = Vector2(-397, 64)
+has_clue = true
 
 [node name="BedsideTable2" parent="furnitures" unique_id=540798414 instance=ExtResource("3_a4oly")]
 position = Vector2(-255, 64)

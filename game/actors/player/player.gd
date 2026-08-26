@@ -13,9 +13,17 @@ class_name Player
 	GlobalPlayer.ACTION_WALK:false
 }
 
+
+
 @onready var actionGrid:GridContainer=$HUD/CanvasLayer/Panel/MarginContainer/ActionGridContainer
 @onready var panel=$PanelContainer
 @onready var panel_label=$PanelContainer/MarginContainer/Label
+
+@onready var itemGrid:GridContainer=$HUD/CanvasLayer/Panel/MarginContainer2/ItemGridContainer
+
+#items
+@onready var bedsideTableClue:Sprite2D=$HUD/items/BedsideTableClue
+@onready var bedroomKey:Sprite2D=$HUD/items/BedroomKey
 
 var button_list: Dictionary[String,Button]
 
@@ -35,11 +43,16 @@ func _ready() -> void:
 	stop_move()
 	
 	load_action_button_list()
+	load_item_button_list()
 	
 	panel.visible=false
 	
 	GlobalEvents.stop_action.connect(on_stop_action)
 	GlobalEvents.player_say.connect(say)
+	GlobalEvents.refresh_inventory.connect(load_item_button_list)
+	
+	
+	
 
 func say(message:String):
 	panel.visible=true
@@ -87,6 +100,27 @@ func load_action_button_list()->void:
 func refresh_action_button_list()->void:
 	for action_button_loop:Button in actionGrid.get_children():
 		action_button_loop.button_pressed=false
+		
+func load_item_button_list()->void:
+	remove_all_children(itemGrid)
+	
+	for itemLoop:String in GlobalPlayer.get_item_list_in_inventory():
+		var new_button_loop:Button = Button.new()
+		new_button_loop.custom_minimum_size=bedroomKey.texture.get_size()
+		
+		new_button_loop.toggle_mode=true
+		
+		var button_sprite_loop:Sprite2D= Sprite2D.new()
+		
+		if itemLoop==GlobalPlayer.ITEM_BEDROOM_CLUE:
+			button_sprite_loop=bedsideTableClue.duplicate()
+		elif itemLoop==GlobalPlayer.ITEM_BEDROOM_KEY:
+			button_sprite_loop=bedroomKey.duplicate()
+		
+		new_button_loop.add_child(button_sprite_loop)
+		button_sprite_loop.position=new_button_loop.custom_minimum_size/2
+		
+		itemGrid.add_child(new_button_loop)
 
 func on_stop_action()->void:
 	refresh_action_button_list()

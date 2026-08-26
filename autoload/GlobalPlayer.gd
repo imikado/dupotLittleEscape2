@@ -8,6 +8,7 @@ const ACTION_TAKE="action_take"
 const ACTION_WALK="action_walk"
 
 const ITEM_BEDROOM_KEY="item_bedroom_key"
+const ITEM_BEDROOM_CLUE="item_bedroom_clue"
 
 var _inventory_list:Array[String]=[]
 
@@ -37,6 +38,7 @@ func is_current_action_selectable()->bool:
 
 func add_item_in_inventory(item:String):
 	_inventory_list.append(item)
+	GlobalEvents.refresh_inventory.emit()
 	
 func has_item_in_inventory(item:String)->bool:
 	return _inventory_list.has(item)

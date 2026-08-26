@@ -3,6 +3,12 @@ extends FurnitureAbstract
 const ANIM_OPEN = 'open'
 const ANIM_CLOSE = 'close'
 
+const ANIM_OPEN_WITH_CLUE = 'open_with_clue'
+const ANIM_CLOSE_WITH_CLUE = 'close_with_clue'
+
+
+@export var has_alarm_clock: bool = false
+@export var has_clue:bool=false
 #@export var item_in_drawer: Node2D = null
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
@@ -10,7 +16,8 @@ const ANIM_CLOSE = 'close'
 
 var opened: bool = false
 
-@export var has_alarm_clock: bool = false
+@onready var alarmClockLabel:Label=$alarmClock/Label
+@onready var alarmTimer:Timer=$alarmClock/Label/Timer
 
 var player: Player = null
 
@@ -20,6 +27,8 @@ func _ready() -> void:
 	alarmClock.visible = has_alarm_clock
 	if has_alarm_clock:
 		alarmClock.play()
+		_on_alarm_timer_timeout()
+		
 	pass # Replace with function body.
 
 func stop_clock_animation():
@@ -33,24 +42,47 @@ func open_drawer():
 	if opened:
 		GlobalEvents.player_say.emit("Already opened")
 		return
-	animationPlayer.play(ANIM_OPEN)
+	var anim:String=ANIM_OPEN
+	if has_clue:
+		anim=ANIM_OPEN_WITH_CLUE
+	animationPlayer.play(anim)
 	opened = true
 
 func close_drawer():
 	if not opened:
 		GlobalEvents.player_say.emit("Already closed")
 		return
-	animationPlayer.play(ANIM_CLOSE)
+	var anim:String=ANIM_CLOSE
+	if has_clue:
+		anim=ANIM_CLOSE_WITH_CLUE
+	animationPlayer.play(anim)
 	opened = false
 
 
 func on_action_selected(action: String) -> void:
+	
+	
 	if action == GlobalPlayer.ACTION_OPEN:
 		open_drawer()
 	elif action == GlobalPlayer.ACTION_CLOSE:
 		close_drawer()
-		
+	elif action == GlobalPlayer.ACTION_TAKE:
+		if opened and has_clue:
+			player_say("I take this clue")
+			has_clue=false
+			animationPlayer.play("open")
+			GlobalPlayer.add_item_in_inventory(GlobalPlayer.ITEM_BEDROOM_CLUE)
 	elif action == GlobalPlayer.ACTION_OBSERVE:
-		GlobalEvents.player_say.emit("It is a bedside table with a drawer ?")
+		return player_say("It is a bedside table with a drawer ?")
 	else:
-		GlobalEvents.player_say.emit("I don't think so")
+		return player_say("I don't think so")
+
+
+func _on_alarm_timer_timeout() -> void:
+	var dateDict:Dictionary=Time.get_datetime_dict_from_system()
+	alarmClockLabel.text=str(dateDict['hour'])+':'+str(dateDict['minute'])
+	
+	alarmTimer.stop()
+	alarmTimer.start()
+	alarmTimer.timeout.connect(_on_alarm_timer_timeout)
+	

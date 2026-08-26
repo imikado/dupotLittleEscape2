@@ -4,6 +4,8 @@
 [ext_resource type="Theme" uid="uid://btpp4jwtg0cw4" path="res://game/ui/pixel_theme.tres" id="3_m3o3f"]
 [ext_resource type="Texture2D" uid="uid://d31fake654abb" path="res://game/actors/player/player_idle.png" id="3_p81wk"]
 [ext_resource type="Texture2D" uid="uid://beabwntyx10p1" path="res://game/ui/assets/ui_items.png" id="4_pqla1"]
+[ext_resource type="Texture2D" uid="uid://d1cgtsnnbmyk5" path="res://game/rooms/bedroom/items/bedsideTableClue.png" id="5_m3o3f"]
+[ext_resource type="Texture2D" uid="uid://cu2lql2s0uyrs" path="res://game/rooms/bedroom/items/bedroomKey.png" id="6_pqla1"]
 
 [sub_resource type="Animation" id="Animation_em52k"]
 length = 0.001
@@ -166,7 +168,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 2.0
 offset_top = -38.0
-offset_right = 2.0
+offset_right = -176.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -198,6 +200,30 @@ text = "aaa"
 [node name="Button6" type="Button" parent="HUD/CanvasLayer/Panel/MarginContainer/ActionGridContainer" unique_id=632549711]
 layout_mode = 2
 text = "aaa"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HUD/CanvasLayer/Panel" unique_id=1608444511]
+layout_mode = 0
+offset_left = 193.0
+offset_right = 315.0
+offset_bottom = 36.0
+
+[node name="ItemGridContainer" type="GridContainer" parent="HUD/CanvasLayer/Panel/MarginContainer2" unique_id=449765742]
+layout_mode = 2
+columns = 3
+
+[node name="Button" type="Button" parent="HUD/CanvasLayer/Panel/MarginContainer2/ItemGridContainer" unique_id=1616155825]
+layout_mode = 2
+text = "aaa"
+
+[node name="items" type="Node2D" parent="HUD" unique_id=699301172]
+
+[node name="BedsideTableClue" type="Sprite2D" parent="HUD/items" unique_id=663997734]
+position = Vector2(-44, 119)
+texture = ExtResource("5_m3o3f")
+
+[node name="BedroomKey" type="Sprite2D" parent="HUD/items" unique_id=1523687213]
+position = Vector2(-45, 138)
+texture = ExtResource("6_pqla1")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1184804811]
 custom_minimum_size = Vector2(2, 0)

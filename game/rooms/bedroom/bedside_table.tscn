@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bhtdj7f3wpsbq"]
 
 [ext_resource type="Script" uid="uid://bfs25tl7l25ee" path="res://game/rooms/bedroom/bedside_table.gd" id="1_g4s5b"]
-[ext_resource type="Texture2D" uid="uid://dyn3gua2osgq6" path="res://game/rooms/bedroom/furnitures.png" id="1_ua5ej"]
 [ext_resource type="PackedScene" uid="uid://dr47ia3kf8xfc" path="res://game/rooms/bedroom/alarm_clock.tscn" id="3_4j8hk"]
 [ext_resource type="Texture2D" uid="uid://c8k15lp11wepr" path="res://game/rooms/bedroom/bedsideTable_open.png" id="3_62j1q"]
+[ext_resource type="Theme" uid="uid://btpp4jwtg0cw4" path="res://game/ui/pixel_theme.tres" id="4_ept6j"]
+[ext_resource type="Texture2D" uid="uid://beplbutyeyktk" path="res://game/rooms/bedroom/bedsideTableClue_open.png" id="5_ept6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ua5ej"]
 size = Vector2(26, 16)
@@ -86,8 +87,8 @@ tracks/2/keys = {
 "values": [3, 2, 1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_62j1q"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_ss1w0"]
+resource_name = "close_with_clue"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -98,7 +99,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_ua5ej")]
+"values": [ExtResource("5_ept6j")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -110,7 +111,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -119,10 +120,10 @@ tracks/2/path = NodePath("Furnitures:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.23333333, 0.56666666, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [3, 2, 1, 0]
 }
 
 [sub_resource type="Animation" id="Animation_4j8hk"]
@@ -164,12 +165,52 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_n8vps"]
+resource_name = "open_with_clue"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Furnitures:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ept6j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Furnitures:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Furnitures:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.56666666, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4j8hk"]
 _data = {
 &"RESET": SubResource("Animation_g4s5b"),
 &"close": SubResource("Animation_ept6j"),
-&"idle": SubResource("Animation_62j1q"),
-&"open": SubResource("Animation_4j8hk")
+&"close_with_clue": SubResource("Animation_ss1w0"),
+&"open": SubResource("Animation_4j8hk"),
+&"open_with_clue": SubResource("Animation_n8vps")
 }
 
 [node name="BedsideTable" type="Node2D" unique_id=1810283172 node_paths=PackedStringArray("_sprite", "_control")]
@@ -185,7 +226,19 @@ region_rect = Rect2(336, 160, 32, 24)
 
 [node name="alarmClock" parent="." unique_id=239177879 instance=ExtResource("3_4j8hk")]
 position = Vector2(1, -3)
-frame_progress = 0.7790824
+
+[node name="Label" type="Label" parent="alarmClock" unique_id=1322314813]
+offset_left = -3.0
+offset_top = -2.0
+offset_right = 37.0
+offset_bottom = 21.0
+theme = ExtResource("4_ept6j")
+theme_override_colors/font_color = Color(0.80077666, 0.08296508, 0.22131604, 1)
+theme_override_font_sizes/font_size = 2
+text = "21: 37"
+
+[node name="Timer" type="Timer" parent="alarmClock/Label" unique_id=23946018]
+wait_time = 30.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1428041348]
 
