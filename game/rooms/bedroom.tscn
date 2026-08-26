@@ -75,11 +75,11 @@ sources/0 = SubResource("TileSetAtlasSource_gc77d")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbj6w"]
 size = Vector2(576, 196.5)
 
-[node name="Bedroom" type="Node2D" unique_id=1964261214 node_paths=PackedStringArray("player", "area_2d", "ground")]
+[node name="Bedroom" type="Node2D" unique_id=1964261214 node_paths=PackedStringArray("_area_2d", "_ground", "_player")]
 script = ExtResource("1_vgdy4")
-player = NodePath("Player")
-area_2d = NodePath("SelectionArea2D")
-ground = NodePath("ground")
+_area_2d = NodePath("SelectionArea2D")
+_ground = NodePath("ground")
+_player = NodePath("Player")
 
 [node name="wall" type="TileMapLayer" parent="." unique_id=702722730]
 tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAQAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAA=")

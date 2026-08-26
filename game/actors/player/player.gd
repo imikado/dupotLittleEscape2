@@ -49,20 +49,13 @@ func say(message:String):
 	panel.visible=false
 	
 
-func _input(event: InputEvent) -> void:
-		
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if(!can_move):
-			return
-		target_mouse_position = get_global_mouse_position()
-		
-		print("target_mouse")
- 
-func enable_move():
-	can_move = true
 
-func disable_move():
-	can_move = false
+func start_move()->void:
+	target_mouse_position = get_global_mouse_position()
+
+func stop_move():
+	target_mouse_position = global_position
+
 
 func _physics_process(delta: float) -> void:
 
@@ -76,9 +69,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func stop_move():
-	disable_move()
-	target_mouse_position = global_position
 	
 func load_action_button_list()->void:
 	
@@ -109,11 +99,7 @@ func start_action(action_name:String):
 		
 	GlobalPlayer.start_action(action_name)
 	
-	if action_name == GlobalPlayer.ACTION_WALK:
-		enable_move()
-	else:
-		stop_move()
-	
+ 	
 func remove_all_children(object:Node)->void:
 	var children=object.get_children()
 	for child_loop in children:
