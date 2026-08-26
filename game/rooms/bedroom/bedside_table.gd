@@ -46,6 +46,8 @@ func close_drawer():
 
 	
 func on_action_selected(action:String):
+	print("on action selected "+action)
+
 	if action==GlobalPlayer.ACTION_OPEN:
 		return open_drawer()
 	elif action==GlobalPlayer.ACTION_CLOSE:

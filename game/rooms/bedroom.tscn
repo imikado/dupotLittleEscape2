@@ -72,9 +72,14 @@ texture_region_size = Vector2i(96, 96)
 tile_size = Vector2i(96, 96)
 sources/0 = SubResource("TileSetAtlasSource_gc77d")
 
-[node name="Bedroom" type="Node2D" unique_id=1964261214 node_paths=PackedStringArray("player")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbj6w"]
+size = Vector2(576, 196.5)
+
+[node name="Bedroom" type="Node2D" unique_id=1964261214 node_paths=PackedStringArray("player", "area_2d", "ground")]
 script = ExtResource("1_vgdy4")
 player = NodePath("Player")
+area_2d = NodePath("SelectionArea2D")
+ground = NodePath("ground")
 
 [node name="wall" type="TileMapLayer" parent="." unique_id=702722730]
 tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAQAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAA=")
@@ -83,6 +88,12 @@ tile_set = SubResource("TileSet_mokrw")
 [node name="ground" type="TileMapLayer" parent="." unique_id=1613126909]
 tile_map_data = PackedByteArray("AAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_rvnao")
+
+[node name="SelectionArea2D" type="Area2D" parent="." unique_id=1908151008]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea2D" unique_id=1655434356]
+position = Vector2(288, 289.75)
+shape = SubResource("RectangleShape2D_lbj6w")
 
 [node name="furnitures" type="Node2D" parent="." unique_id=431881280]
 position = Vector2(466, 120)

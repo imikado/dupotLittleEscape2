@@ -14,6 +14,27 @@ var _inventory_list:Array[String]=[]
 var _global_position:Vector2=Vector2.ZERO
 var _state_value_list:Dictionary={}
 
+var _action_selected:String=""
+
+func start_action(action:String):
+	_action_selected=action
+
+func stop_action():
+	_action_selected=""
+	GlobalEvents.stop_action.emit()
+	
+func get_current_action():
+	return _action_selected
+	
+func has_current_action()->bool:
+	return _action_selected !=''
+
+func is_current_action_walkable()->bool:
+	return _action_selected==ACTION_WALK
+
+func is_current_action_selectable()->bool:
+	return _action_selected!=ACTION_WALK and _action_selected!=''
+
 func add_item_in_inventory(item:String):
 	_inventory_list.append(item)
 	

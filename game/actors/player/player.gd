@@ -29,6 +29,7 @@ var can_move = false
 var button_enabled:String=''
 
 func _ready() -> void:
+	
 	target_mouse_position=global_position
 	animationPlayer.play('idle')
 	stop_move()
@@ -37,6 +38,7 @@ func _ready() -> void:
 	
 	panel.visible=false
 	
+	GlobalEvents.stop_action.connect(on_stop_action)
 	GlobalEvents.player_say.connect(say)
 
 func say(message:String):
@@ -96,15 +98,16 @@ func refresh_action_button_list()->void:
 	for action_button_loop:Button in actionGrid.get_children():
 		action_button_loop.button_pressed=false
 
+func on_stop_action()->void:
+	refresh_action_button_list()
+
 func start_action(action_name:String):
 	refresh_action_button_list()
 	
 	var button_clicked:Button=button_list[action_name]
 	button_clicked.button_pressed=true
-	
-	#button_enabled=action_name
-	
-	GlobalEvents.start_action.emit(action_name)
+		
+	GlobalPlayer.start_action(action_name)
 	
 	if action_name == GlobalPlayer.ACTION_WALK:
 		enable_move()

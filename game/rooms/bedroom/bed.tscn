@@ -6,13 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oaiff"]
 size = Vector2(99, 87)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8pkj"]
-size = Vector2(99, 110)
-
-[node name="Bed" type="Node2D" unique_id=1980249435 node_paths=PackedStringArray("sprite", "area_2d")]
+[node name="Bed" type="Node2D" unique_id=1980249435 node_paths=PackedStringArray("_sprite", "_control")]
 script = ExtResource("1_y8pkj")
-sprite = NodePath("Furnitures")
-area_2d = NodePath("SelectionArea2D")
+_sprite = NodePath("Furnitures")
+_control = NodePath("Control")
 
 [node name="Furnitures" type="Sprite2D" parent="." unique_id=1941946103]
 position = Vector2(24, 24)
@@ -26,8 +23,10 @@ region_rect = Rect2(216, 160, 112, 112)
 position = Vector2(21.5, 33.5)
 shape = SubResource("RectangleShape2D_oaiff")
 
-[node name="SelectionArea2D" type="Area2D" parent="." unique_id=135401375]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea2D" unique_id=1478855119]
-position = Vector2(21.5, 23)
-shape = SubResource("RectangleShape2D_y8pkj")
+[node name="Control" type="Control" parent="." unique_id=1478921754]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -29.0
+offset_top = -32.0
+offset_right = 72.0
+offset_bottom = 77.0

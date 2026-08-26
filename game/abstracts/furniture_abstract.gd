@@ -1,47 +1,54 @@
 extends Node
 class_name FurnitureAbstract
 
-@export var sprite: Sprite2D
-@export var area_2d: Area2D
+@export var _sprite:Sprite2D
+@export var _control:Control
 
-var action_selected:String=""
 
 var selection_tween: Tween
 
+
 func _ready():
-	if area_2d:
-		# Connexion du signal de détection de clic
-		area_2d.input_event.connect(_on_area_2d_input_event)
-
-func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
-	# Vérifie si l'événement est un clic gauche de souris enfoncé
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		GlobalEvents.stop_action.emit()
-		on_action_selected(action_selected)
-
-func start_selection(action:String):
-	action_selected=action
-	print('action started')
 	
-	if not sprite:
+	if _control:
+		_control.gui_input.connect(on_control_mouse_clicked)
+		_control.mouse_entered.connect(on_control_mouse_entered)
+		_control.mouse_exited.connect(on_control_mouse_exited)
+
+func on_control_mouse_entered():
+	start_blinking()
+	
+
+func on_control_mouse_exited():
+	stop_blinking()
+	
+
+func on_control_mouse_clicked(event: InputEvent) -> void:
+	if not GlobalPlayer.is_current_action_selectable():
 		return
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		on_action_selected(GlobalPlayer.get_current_action())
+		GlobalPlayer.stop_action()
+		stop_blinking()
+ 
+func start_blinking():
 	
-	stop_selection()
+	if not _control or not GlobalPlayer.is_current_action_selectable():
+		return
+			
+	stop_blinking()
 	
 	# Création du Tween en boucle
 	selection_tween = create_tween().set_loops()
 	
-	# Teinte le sprite en rouge (ou n'importe quelle autre couleur) en 0.3 sec
-	selection_tween.tween_property(sprite, "modulate", Color.GRAY, 0.3)
-	# Revient à la couleur d'origine (blanc neutre) en 0.3 sec
-	selection_tween.tween_property(sprite, "modulate", Color.WHITE, 0.3)
+	selection_tween.tween_property(_sprite, "modulate", Color.GRAY, 0.6)
+	selection_tween.tween_property(_sprite, "modulate", Color.WHITE, 0.3)
 
-func stop_selection():
-	print('action stopped')
+func stop_blinking():	
 	if selection_tween and selection_tween.is_running():
 		selection_tween.kill()
-	if sprite:
-		sprite.modulate = Color.WHITE
+	if _sprite:
+		_sprite.modulate = Color.WHITE
 	
 func on_action_selected(action:String):
 	GlobalEvents.player_say.emit("I don't think so")
