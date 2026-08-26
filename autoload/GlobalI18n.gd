@@ -4,7 +4,7 @@ const LANG_FR="fr"
 const LANG_EN="en"
 
 var lang=LANG_FR
-static var trad_fr_list={
+var trad_fr_list={
 	GlobalPlayer.ACTION_CLOSE:"Fermer",
 	GlobalPlayer.ACTION_OPEN:"Ouvrir",
 	GlobalPlayer.ACTION_OBSERVE:"Observer",
@@ -13,6 +13,6 @@ static var trad_fr_list={
 	GlobalPlayer.ACTION_WALK:"Marcher"
 }
 
-static func translate(key:String)->String:
+func translate(key:String)->String:
 	return trad_fr_list[key]
 	

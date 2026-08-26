@@ -50,5 +50,5 @@ func stop_blinking():
 	if _sprite:
 		_sprite.modulate = Color.WHITE
 	
-func on_action_selected(action:String):
+func on_action_selected(_action:String):
 	GlobalEvents.player_say.emit("I don't think so")
