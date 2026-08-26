@@ -44,12 +44,13 @@ func close_drawer():
 	opened = false
 
 
-	
-func on_action_selected(action:String):
-	print("on action selected "+action)
-
-	if action==GlobalPlayer.ACTION_OPEN:
-		return open_drawer()
-	elif action==GlobalPlayer.ACTION_CLOSE:
-		return close_drawer()
-	GlobalEvents.player_say.emit("I don't think so")
+func on_action_selected(action: String) -> void:
+	if action == GlobalPlayer.ACTION_OPEN:
+		open_drawer()
+	elif action == GlobalPlayer.ACTION_CLOSE:
+		close_drawer()
+		
+	elif action == GlobalPlayer.ACTION_OBSERVE:
+		GlobalEvents.player_say.emit("It is a bedside table with a drawer ?")
+	else:
+		GlobalEvents.player_say.emit("I don't think so")

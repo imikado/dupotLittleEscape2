@@ -1,15 +1,14 @@
 extends Node
 class_name FurnitureAbstract
 
-@export var _sprite:Sprite2D
-@export var _control:Control
+@export var _sprite: Sprite2D
+@export var _control: Control
 
 
 var selection_tween: Tween
 
 
 func _ready():
-	
 	if _control:
 		_control.gui_input.connect(on_control_mouse_clicked)
 		_control.mouse_entered.connect(on_control_mouse_entered)
@@ -32,7 +31,6 @@ func on_control_mouse_clicked(event: InputEvent) -> void:
 		stop_blinking()
  
 func start_blinking():
-	
 	if not _control or not GlobalPlayer.is_current_action_selectable():
 		return
 			
@@ -44,11 +42,14 @@ func start_blinking():
 	selection_tween.tween_property(_sprite, "modulate", Color.GRAY, 0.6)
 	selection_tween.tween_property(_sprite, "modulate", Color.WHITE, 0.3)
 
-func stop_blinking():	
+func stop_blinking():
 	if selection_tween and selection_tween.is_running():
 		selection_tween.kill()
 	if _sprite:
 		_sprite.modulate = Color.WHITE
 	
-func on_action_selected(_action:String):
+func on_action_selected(_action: String):
 	GlobalEvents.player_say.emit("I don't think so")
+
+func player_say(message: String) -> void:
+	GlobalEvents.player_say.emit(message)
