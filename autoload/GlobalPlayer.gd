@@ -78,6 +78,7 @@ func has_state_value(room:String,item:String)->bool:
 func get_state_value(room:String,item:String):
 	return _state_value_list.get(get_state_key(room,item))
 
+
 func open_room(room:String):
 	_room_selected=room
 	get_tree().change_scene_to_file(_room_dictionary[room])

@@ -2,20 +2,19 @@ extends FurnitureAbstract
 
 const ANIM_OPEN = 'open'
 const ANIM_CLOSE = 'close'
+const ANIM_OPENED = 'opened'
 
 const ANIM_OPEN_WITH_CLUE = 'open_with_clue'
+const ANIM_OPENED_WITH_CLUE = 'opened_with_clue'
 const ANIM_CLOSE_WITH_CLUE = 'close_with_clue'
 
 const STATE_HAS_CLUE="hasClue"
+const STATE_OPENED="opened"
 
 @export var has_alarm_clock: bool = false
-@export var has_clue:bool=false
-#@export var item_in_drawer: Node2D = null
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var alarmClock: AnimatedSprite2D = $alarmClock
-
-var opened: bool = false
 
 @onready var alarmClockLabel:Label=$alarmClock/Label
 @onready var alarmTimer:Timer=$alarmClock/Label/Timer
@@ -32,36 +31,42 @@ func _ready() -> void:
 		alarmClock.play()
 		_on_alarm_timer_timeout()
 		
-	has_clue=(get_state_value(STATE_HAS_CLUE,STATE_YES)==STATE_YES)
+	if is_opened():
+		var anim:String=ANIM_OPENED
+		if has_clue():
+			anim=ANIM_OPENED_WITH_CLUE
+		animationPlayer.play(anim)
 		
-	pass # Replace with function body.
-
 func stop_clock_animation():
 	alarmClock.play("empty")
+ 
+func has_clue()->bool:
+	return	is_state_value(STATE_HAS_CLUE,STATE_YES,STATE_YES)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+func is_opened()->bool:
+	return	is_state_value(STATE_OPENED,STATE_YES,STATE_NO)
+
 
 func open_drawer():
-	if opened:
+	if is_opened():
 		GlobalEvents.player_say.emit("Already opened")
 		return
 	var anim:String=ANIM_OPEN
-	if has_clue:
+	if has_clue():
 		anim=ANIM_OPEN_WITH_CLUE
 	animationPlayer.play(anim)
-	opened = true
+	set_state_value(STATE_OPENED,STATE_YES)
 
 func close_drawer():
-	if not opened:
+	if not is_opened():
 		GlobalEvents.player_say.emit("Already closed")
 		return
 	var anim:String=ANIM_CLOSE
-	if has_clue:
+	if has_clue():
 		anim=ANIM_CLOSE_WITH_CLUE
 	animationPlayer.play(anim)
-	opened = false
+	set_state_value(STATE_OPENED,STATE_NO)
+
 
 
 func on_action_selected(action: String) -> void:
@@ -72,10 +77,9 @@ func on_action_selected(action: String) -> void:
 	elif action == GlobalPlayer.ACTION_CLOSE:
 		close_drawer()
 	elif action == GlobalPlayer.ACTION_TAKE:
-		if opened and has_clue:
+		if is_state_value(STATE_OPENED,STATE_YES,STATE_YES) and is_state_value(STATE_HAS_CLUE,STATE_YES,STATE_YES):
 			player_say("I take this clue")
-			has_clue=false
-			animationPlayer.play("open")
+			animationPlayer.play(ANIM_OPENED)
 			GlobalPlayer.add_item_in_inventory(GlobalPlayer.ITEM_BEDROOM_CLUE)
 			set_state_value(STATE_HAS_CLUE,STATE_NO)
 	elif action == GlobalPlayer.ACTION_OBSERVE:

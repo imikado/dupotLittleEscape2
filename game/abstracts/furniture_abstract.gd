@@ -71,3 +71,6 @@ func get_state_value(key:String,default:String)->String:
 
 func set_state_value(key:String,value:String):
 	GlobalPlayer.set_state_value(GlobalPlayer._room_selected,_id+key,value)
+	
+func is_state_value(key:String,value:String,default:String)->bool:
+	return (get_state_value(key,default)==value)
