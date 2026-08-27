@@ -116,6 +116,8 @@ func load_item_button_list()->void:
 			button_sprite_loop=bedsideTableClue.duplicate()
 		elif itemLoop==GlobalPlayer.ITEM_BEDROOM_KEY:
 			button_sprite_loop=bedroomKey.duplicate()
+			
+		new_button_loop.pressed.connect(GlobalPlayer.open_item_show_with_name.bind(itemLoop))
 		
 		new_button_loop.add_child(button_sprite_loop)
 		button_sprite_loop.position=new_button_loop.custom_minimum_size/2

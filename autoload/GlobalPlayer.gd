@@ -10,12 +10,26 @@ const ACTION_WALK="action_walk"
 const ITEM_BEDROOM_KEY="item_bedroom_key"
 const ITEM_BEDROOM_CLUE="item_bedroom_clue"
 
+const ROOM_BEDROOM="room_bedroom"
+
+var _room_selected:String
+
+var _room_dictionary={
+	ROOM_BEDROOM:"res://game/rooms/bedroom.tscn"
+}
+
+var _itemDictionary={
+	ITEM_BEDROOM_CLUE:"res://game/rooms/bedroom/items/bedsideTableClueLarge.png"
+}
+
 var _inventory_list:Array[String]=[]
 
 var _global_position:Vector2=Vector2.ZERO
 var _state_value_list:Dictionary={}
 
 var _action_selected:String=""
+
+var _item_show_path:String=""
 
 func start_action(action:String):
 	_action_selected=action
@@ -63,3 +77,17 @@ func has_state_value(room:String,item:String)->bool:
 
 func get_state_value(room:String,item:String):
 	return _state_value_list.get(get_state_key(room,item))
+
+func open_room(room:String):
+	_room_selected=room
+	get_tree().change_scene_to_file(_room_dictionary[room])
+
+func go_to_previous_room():
+	open_room(_room_selected)
+	
+func open_item_show_with_name(name:String):
+	_item_show_path=_itemDictionary[name]
+	get_tree().change_scene_to_file("res://game/shared/item_show.tscn")
+	
+func get_item_show_path()->String:
+	return _item_show_path

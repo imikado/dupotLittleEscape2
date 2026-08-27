@@ -2,5 +2,5 @@ extends Node2D
 
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file('res://game/rooms/bedroom.tscn')
+	GlobalPlayer.open_room(GlobalPlayer.ROOM_BEDROOM)
 	pass # Replace with function body.

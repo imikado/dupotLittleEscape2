@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://krkkqu64h4mf"]
+
+[ext_resource type="Script" uid="uid://bgtpq2my3j4ix" path="res://game/shared/item_show.gd" id="1_5sp0s"]
+[ext_resource type="Theme" uid="uid://btpp4jwtg0cw4" path="res://game/ui/pixel_theme.tres" id="1_lnr6l"]
+
+[node name="ItemShow" type="Control" unique_id=1379032508]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lnr6l")
+script = ExtResource("1_5sp0s")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2121613044]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer" unique_id=1181955924]
+
+[node name="CloseButton" type="Button" parent="." unique_id=152019025]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 82.0
+offset_right = 173.0
+offset_bottom = 98.0
+theme = ExtResource("1_lnr6l")
+text = "close"
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
