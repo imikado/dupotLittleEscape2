@@ -10,6 +10,6 @@ func _ready() -> void:
 	
 func on_action_selected(action: String) -> void:
 	if action == GlobalPlayer.ACTION_OBSERVE:
-		GlobalEvents.player_say.emit("It is a simple bed")
+		player_say("It is a simple bed")
 	else:
-		GlobalEvents.player_say.emit("I don't think so")
+		player_say("I don't think so")

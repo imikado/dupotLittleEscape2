@@ -1,6 +1,5 @@
 extends FurnitureAbstract
 
-var opened: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,12 +15,12 @@ func close_doors():
 
 func on_action_selected(action: String) -> void:
 	if action == GlobalPlayer.ACTION_OPEN:
-		if opened:
+		if is_opened():
 			player_say('Cupboard already opened')
 			return
 		open_padlock_window()
 	elif action == GlobalPlayer.ACTION_CLOSE:
-		if not opened:
+		if not is_opened():
 			player_say('Cupboard already closed')
 			return
 

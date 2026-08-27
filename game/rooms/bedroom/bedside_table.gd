@@ -14,7 +14,6 @@ const ANIM_CLOSE_WITH_CLUE_CLOCK = 'close_with_clue_clock'
 
 const STATE_HAS_CLUE="hasClue"
 const STATE_HAS_CLUE_CLOCK="hasClueClock"
-const STATE_OPENED="opened"
 
 @export var has_alarm_clock: bool = false
 
@@ -59,8 +58,6 @@ func has_clue_clock()->bool:
 
 	return	is_state_value(STATE_HAS_CLUE_CLOCK,STATE_YES,default)
 
-func is_opened()->bool:
-	return	is_state_value(STATE_OPENED,STATE_YES,STATE_NO)
 
 
 func open_drawer():

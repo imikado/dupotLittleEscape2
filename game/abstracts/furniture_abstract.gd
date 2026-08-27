@@ -1,6 +1,8 @@
 extends Node
 class_name FurnitureAbstract
 
+const STATE_OPENED="opened"
+
 const STATE_YES = "yes"
 const STATE_NO = "no"
 
@@ -77,3 +79,6 @@ func is_state_value(key: String, value: String, default: String) -> bool:
 
 func get_current_room() -> String:
 	return GlobalGame.get_current_room()
+
+func is_opened()->bool:
+	return	is_state_value(STATE_OPENED,STATE_YES,STATE_NO)
