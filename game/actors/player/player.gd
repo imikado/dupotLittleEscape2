@@ -20,10 +20,6 @@ class_name Player
 
 @onready var itemGrid: GridContainer = $HUD/CanvasLayer/Panel/MarginContainer2/ItemGridContainer
 
-#items
-@onready var bedsideTableClue: Sprite2D = $HUD/items/BedsideTableClue
-@onready var bedroomKey: Sprite2D = $HUD/items/BedroomKey
-
 var button_list: Dictionary[String, Button]
 
 var target_mouse_position = Vector2.ZERO
@@ -99,7 +95,7 @@ func load_item_button_list() -> void:
 	
 	for itemLoop: String in GlobalPlayer.get_item_list_in_inventory():
 		var new_button_loop: Button = Button.new()
-		new_button_loop.custom_minimum_size = bedroomKey.texture.get_size()
+		new_button_loop.custom_minimum_size = Vector2(20,20)
 		
 		new_button_loop.toggle_mode = true
 		
@@ -107,11 +103,6 @@ func load_item_button_list() -> void:
 		
 		var sprite_path = GlobalGame.get_item_icon_path(itemLoop)
 		button_sprite_loop.texture = load(sprite_path)
-
-		#if itemLoop == GlobalGame.ITEM_BEDROOM_CLUE:
-		#	button_sprite_loop = bedsideTableClue.duplicate()
-		#elif itemLoop == GlobalGame.ITEM_BEDROOM_KEY:
-		#	button_sprite_loop = bedroomKey.duplicate()
 			
 		new_button_loop.pressed.connect(GlobalGame.open_item_show_with_name.bind(itemLoop))
 		

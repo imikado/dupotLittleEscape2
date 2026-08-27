@@ -3,6 +3,7 @@ extends Node
 
 const ITEM_BEDROOM_KEY = "item_bedroom_key"
 const ITEM_BEDROOM_CLUE = "item_bedroom_clue"
+const ITEM_BEDROOM_CLUE_CLOCK = "item_bedroom_clue_clock"
 
 const ROOM_BEDROOM = "room_bedroom"
 
@@ -23,6 +24,10 @@ var _itemDictionary = {
 	ITEM_BEDROOM_CLUE: [
 		"res://game/rooms/bedroom/items/bedsideTableClue.png",
 		"res://game/rooms/bedroom/items/bedsideTableClueLarge.png"
+	],
+	ITEM_BEDROOM_CLUE_CLOCK: [
+		"res://game/rooms/bedroom/items/bedsideTableClue2.png",
+		"res://game/rooms/bedroom/items/bedsideTableClue2Large.png"
 	]
 }
 

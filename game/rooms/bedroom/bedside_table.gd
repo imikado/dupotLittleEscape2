@@ -8,7 +8,12 @@ const ANIM_OPEN_WITH_CLUE = 'open_with_clue'
 const ANIM_OPENED_WITH_CLUE = 'opened_with_clue'
 const ANIM_CLOSE_WITH_CLUE = 'close_with_clue'
 
+const ANIM_OPEN_WITH_CLUE_CLOCK = 'open_with_clue_clock'
+const ANIM_OPENED_WITH_CLUE_CLOCK = 'opened_with_clue_clock'
+const ANIM_CLOSE_WITH_CLUE_CLOCK = 'close_with_clue_clock'
+
 const STATE_HAS_CLUE="hasClue"
+const STATE_HAS_CLUE_CLOCK="hasClueClock"
 const STATE_OPENED="opened"
 
 @export var has_alarm_clock: bool = false
@@ -41,7 +46,18 @@ func stop_clock_animation():
 	alarmClock.play("empty")
  
 func has_clue()->bool:
-	return	is_state_value(STATE_HAS_CLUE,STATE_YES,STATE_YES)
+	var default:String=STATE_YES
+	if has_alarm_clock:
+		default=STATE_NO
+
+	return	is_state_value(STATE_HAS_CLUE,STATE_YES,default)
+
+func has_clue_clock()->bool:
+	var default:String=STATE_YES
+	if not has_alarm_clock:
+		default=STATE_NO
+
+	return	is_state_value(STATE_HAS_CLUE_CLOCK,STATE_YES,default)
 
 func is_opened()->bool:
 	return	is_state_value(STATE_OPENED,STATE_YES,STATE_NO)
@@ -54,6 +70,9 @@ func open_drawer():
 	var anim:String=ANIM_OPEN
 	if has_clue():
 		anim=ANIM_OPEN_WITH_CLUE
+	elif has_clue_clock():
+		anim=ANIM_OPEN_WITH_CLUE_CLOCK
+	
 	animationPlayer.play(anim)
 	set_state_value(STATE_OPENED,STATE_YES)
 
@@ -64,6 +83,8 @@ func close_drawer():
 	var anim:String=ANIM_CLOSE
 	if has_clue():
 		anim=ANIM_CLOSE_WITH_CLUE
+	elif has_clue_clock():
+		anim=ANIM_CLOSE_WITH_CLUE_CLOCK
 	animationPlayer.play(anim)
 	set_state_value(STATE_OPENED,STATE_NO)
 
@@ -77,11 +98,21 @@ func on_action_selected(action: String) -> void:
 	elif action == GlobalPlayer.ACTION_CLOSE:
 		close_drawer()
 	elif action == GlobalPlayer.ACTION_TAKE:
-		if is_state_value(STATE_OPENED,STATE_YES,STATE_YES) and is_state_value(STATE_HAS_CLUE,STATE_YES,STATE_YES):
+		if is_opened() and (has_clue() or has_clue_clock()):
 			player_say("I take this clue")
 			animationPlayer.play(ANIM_OPENED)
-			GlobalPlayer.add_item_in_inventory(GlobalGame.ITEM_BEDROOM_CLUE)
-			set_state_value(STATE_HAS_CLUE,STATE_NO)
+			var item:String
+			var state:String
+			if has_clue():
+				item=GlobalGame.ITEM_BEDROOM_CLUE
+				state=STATE_HAS_CLUE
+			else:
+				item=GlobalGame.ITEM_BEDROOM_CLUE_CLOCK
+				state=STATE_HAS_CLUE_CLOCK		
+				
+			GlobalPlayer.add_item_in_inventory(item)
+			set_state_value(state,STATE_NO)
+			
 	elif action == GlobalPlayer.ACTION_OBSERVE:
 		return player_say("It is a bedside table with a drawer ?")
 	else:
