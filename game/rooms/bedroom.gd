@@ -1,13 +1,13 @@
 extends RoomtAbstract
 
-@onready var furniture_group=$furnitures
+@onready var furniture_group = $furnitures
 
-const DEBUG=false
+const DEBUG = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
 	
 	if DEBUG:
-		GlobalPlayer.add_item_in_inventory(GlobalPlayer.ITEM_BEDROOM_CLUE)
-		GlobalPlayer.add_item_in_inventory(GlobalPlayer.ITEM_BEDROOM_KEY)
+		GlobalPlayer.add_item_in_inventory(GlobalGame.ITEM_BEDROOM_CLUE)
+		GlobalPlayer.add_item_in_inventory(GlobalGame.ITEM_BEDROOM_KEY)

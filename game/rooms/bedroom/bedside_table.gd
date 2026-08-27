@@ -80,7 +80,7 @@ func on_action_selected(action: String) -> void:
 		if is_state_value(STATE_OPENED,STATE_YES,STATE_YES) and is_state_value(STATE_HAS_CLUE,STATE_YES,STATE_YES):
 			player_say("I take this clue")
 			animationPlayer.play(ANIM_OPENED)
-			GlobalPlayer.add_item_in_inventory(GlobalPlayer.ITEM_BEDROOM_CLUE)
+			GlobalPlayer.add_item_in_inventory(GlobalGame.ITEM_BEDROOM_CLUE)
 			set_state_value(STATE_HAS_CLUE,STATE_NO)
 	elif action == GlobalPlayer.ACTION_OBSERVE:
 		return player_say("It is a bedside table with a drawer ?")

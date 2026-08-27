@@ -1,8 +1,8 @@
 extends Node
 class_name FurnitureAbstract
 
-const STATE_YES="yes"
-const STATE_NO="no"
+const STATE_YES = "yes"
+const STATE_NO = "no"
 
 @export var _sprite: Sprite2D
 @export var _control: Control
@@ -10,7 +10,7 @@ const STATE_NO="no"
 
 var selection_tween: Tween
 
-var _id:String
+var _id: String
 
 func _ready():
 	if _control:
@@ -58,19 +58,22 @@ func on_action_selected(_action: String):
 func player_say(message: String) -> void:
 	GlobalEvents.player_say.emit(message)
 	
-func set_id(id:String):
-	_id=id
+func set_id(id: String):
+	_id = id
 	
-func add_to_id(suffix:String):
-	_id+=suffix
+func add_to_id(suffix: String):
+	_id += suffix
 	
-func get_state_value(key:String,default:String)->String:
-	if not GlobalPlayer.has_state_value(GlobalPlayer._room_selected,_id+key):
+func get_state_value(key: String, default: String) -> String:
+	if not GlobalGame.has_state_value(GlobalGame.get_current_room(), _id + key):
 		return default
-	return GlobalPlayer.get_state_value(GlobalPlayer._room_selected,_id+key)
+	return GlobalGame.get_state_value(get_current_room(), _id + key)
 
-func set_state_value(key:String,value:String):
-	GlobalPlayer.set_state_value(GlobalPlayer._room_selected,_id+key,value)
+func set_state_value(key: String, value: String):
+	GlobalGame.set_state_value(get_current_room(), _id + key, value)
 	
-func is_state_value(key:String,value:String,default:String)->bool:
-	return (get_state_value(key,default)==value)
+func is_state_value(key: String, value: String, default: String) -> bool:
+	return (get_state_value(key, default) == value)
+
+func get_current_room() -> String:
+	return GlobalGame.get_current_room()

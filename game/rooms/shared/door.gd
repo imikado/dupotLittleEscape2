@@ -1,8 +1,8 @@
 extends FurnitureAbstract
 
-var opened:bool=false
+var opened: bool = false
 
-@onready var animationPlayer:AnimationPlayer
+@onready var animationPlayer: AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +15,7 @@ func open_door():
 		GlobalEvents.player_say.emit("Already opened")
 		return
 	
-	if GlobalPlayer.has_item_in_inventory(GlobalPlayer.ITEM_BEDROOM_KEY):
+	if GlobalPlayer.has_item_in_inventory(GlobalGame.ITEM_BEDROOM_KEY):
 		print('open door')
 		animationPlayer.play("open")
 		
@@ -27,9 +27,9 @@ func close_door():
 		return
 	pass
 
-func on_action_selected(action:String):
-	if action==GlobalPlayer.ACTION_OPEN:
+func on_action_selected(action: String):
+	if action == GlobalPlayer.ACTION_OPEN:
 		return open_door()
-	elif action==GlobalPlayer.ACTION_CLOSE:
+	elif action == GlobalPlayer.ACTION_CLOSE:
 		return close_door()
 	GlobalEvents.player_say.emit("I don't think so")

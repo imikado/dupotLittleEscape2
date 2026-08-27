@@ -25,6 +25,7 @@ GlobalInput="*res://autoload/GlobalInput.gd"
 GlobalI18n="*uid://cdd43u3a31vt"
 GlobalEvents="*uid://68i7ua58upnw"
 GlobalPlayer="*uid://crf68ttyagj"
+GlobalGame="*uid://jtnlb331h6vx"
 
 [display]
 
