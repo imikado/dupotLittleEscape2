@@ -10,6 +10,8 @@ extends FurnitureAbstract
 
 @onready var panelCode:Panel=$Control/Panel
 
+@onready var closeButtom:Button=$Control/CloseButton
+
 const PLACEHOLDER="______"
 const PASSWORD="AB1630"
 
@@ -22,6 +24,8 @@ func _ready() -> void:
 	super()
 	
 	set_id("cupboard")
+	
+	closeButtom.pressed.connect(close_window)
 	
 	clearButton.pressed.connect(reset_code)
 	validButton.pressed.connect(check_code)
@@ -60,6 +64,8 @@ func reset_code():
 func check_code():
 	if code==PASSWORD:
 		set_state_value(STATE_LOCKED,STATE_NO)
+		set_state_value(STATE_OPENED,STATE_YES)
+		
 		GlobalGame.go_to_previous_room()
 	else:
 		blink_red()
@@ -84,3 +90,7 @@ func blink_red():
 	
 	# Sécurité : garantit le retour exact à la couleur de base après les 2 cycles
 	tween.finished.connect(func(): panelCode.self_modulate = original_color, CONNECT_ONE_SHOT) 
+
+
+func close_window():
+	GlobalGame.go_to_previous_room()

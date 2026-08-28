@@ -1,11 +1,23 @@
 extends FurnitureAbstract
 
+const ANIM_CLOSED="closed"
+const ANIM_OPENED="opened"
+const ANIM_OPEN="open"
+
+@onready var animationPlayer:AnimationPlayer=$AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
 	
 	set_id("cupboard")
+	
+	if is_opened():
+		animationPlayer.play(ANIM_OPENED)
+	else:
+		animationPlayer.play(ANIM_CLOSED)
+	
+		
 
 	pass # Replace with function body.
 

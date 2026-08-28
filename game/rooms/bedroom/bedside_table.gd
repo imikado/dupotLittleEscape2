@@ -31,6 +31,8 @@ func _ready() -> void:
 	set_id("bedsideTablewithoutAlarmClock")
 	alarmClock.visible = has_alarm_clock
 	if has_alarm_clock:
+		alarmTimer.timeout.connect(_on_alarm_timer_timeout)
+
 		set_id("bedsideTablewithAlarmClock")
 		alarmClock.play()
 		_on_alarm_timer_timeout()
@@ -118,9 +120,7 @@ func on_action_selected(action: String) -> void:
 
 func _on_alarm_timer_timeout() -> void:
 	var dateDict:Dictionary=Time.get_datetime_dict_from_system()
-	alarmClockLabel.text=str(dateDict['hour'])+':'+str(dateDict['minute'])
-	
+	alarmClockLabel.text = "%02d:%02d" % [dateDict["hour"], dateDict["minute"]]	
 	alarmTimer.stop()
 	alarmTimer.start()
-	alarmTimer.timeout.connect(_on_alarm_timer_timeout)
 	

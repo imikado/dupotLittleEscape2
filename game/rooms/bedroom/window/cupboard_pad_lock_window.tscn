@@ -30,6 +30,14 @@ offset_right = 113.0
 offset_bottom = 108.0
 theme = ExtResource("3_a7lu7")
 
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1611198367]
+layout_mode = 0
+offset_left = -38.0
+offset_top = -51.0
+offset_right = 16.0
+offset_bottom = 75.0
+color = Color(0.52758133, 0.54073125, 0.53636044, 1)
+
 [node name="GridContainer" type="GridContainer" parent="Control" unique_id=703027364]
 layout_mode = 0
 offset_left = -33.0
@@ -92,9 +100,9 @@ text = "B"
 [node name="Panel" type="Panel" parent="Control" unique_id=1525286374]
 layout_mode = 0
 offset_left = -33.0
-offset_top = -53.0
+offset_top = -45.0
 offset_right = 11.0
-offset_bottom = -40.0
+offset_bottom = -32.0
 theme = ExtResource("3_a7lu7")
 theme_override_styles/panel = SubResource("StyleBoxFlat_sjoha")
 metadata/_edit_group_ = true
@@ -126,6 +134,14 @@ offset_right = -21.0
 offset_bottom = 70.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_lbj6w")
 text = " "
+
+[node name="CloseButton" type="Button" parent="Control" unique_id=2128743777]
+layout_mode = 0
+offset_left = 111.0
+offset_top = -76.0
+offset_right = 137.0
+offset_bottom = -60.0
+text = "X"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1408324376]
 position = Vector2(73, 68)

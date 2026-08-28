@@ -13,6 +13,11 @@ func _ready() -> void:
 		_area_2d.input_event.connect(_on_area_2d_input_event)
 		_area_2d.mouse_entered.connect(_on_area_2d_mouse_entered)
 		_area_2d.mouse_exited.connect(_on_area_2d_mouse_exited)
+	
+	var saved_position:Vector2=GlobalPlayer.get_global_position()
+	if saved_position!=Vector2.ZERO:
+		_player.global_position= saved_position
+		_player.set_target_position(saved_position)
 		
 func _on_area_2d_mouse_entered():
 	if GlobalPlayer.get_current_action()!=GlobalPlayer.ACTION_WALK:

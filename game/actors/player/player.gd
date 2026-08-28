@@ -44,7 +44,9 @@ func _ready() -> void:
 	GlobalEvents.stop_action.connect(on_stop_action)
 	GlobalEvents.player_say.connect(say)
 	GlobalEvents.refresh_inventory.connect(load_item_button_list)
-	
+
+func set_target_position(target_position:Vector2):
+	target_mouse_position=target_position
 	
 func say(message: String):
 	panel.visible = true
@@ -56,6 +58,7 @@ func say(message: String):
 
 func start_move() -> void:
 	target_mouse_position = get_global_mouse_position()
+	GlobalPlayer.set_global_position(target_mouse_position)
 
 func stop_move():
 	target_mouse_position = global_position
