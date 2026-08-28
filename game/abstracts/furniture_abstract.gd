@@ -2,6 +2,7 @@ extends Node
 class_name FurnitureAbstract
 
 const STATE_OPENED="opened"
+const STATE_LOCKED="locked"
 
 const STATE_YES = "yes"
 const STATE_NO = "no"
@@ -62,10 +63,7 @@ func player_say(message: String) -> void:
 	
 func set_id(id: String):
 	_id = id
-	
-func add_to_id(suffix: String):
-	_id += suffix
-	
+
 func get_state_value(key: String, default: String) -> String:
 	if not GlobalGame.has_state_value(GlobalGame.get_current_room(), _id + key):
 		return default
@@ -82,3 +80,6 @@ func get_current_room() -> String:
 
 func is_opened()->bool:
 	return	is_state_value(STATE_OPENED,STATE_YES,STATE_NO)
+
+func is_locked()->bool:
+	return	is_state_value(STATE_LOCKED,STATE_YES,STATE_YES)

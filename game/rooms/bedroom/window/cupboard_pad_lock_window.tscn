@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://dk6c6ig2us7qc"]
+
+[ext_resource type="Texture2D" uid="uid://dyn3gua2osgq6" path="res://game/rooms/bedroom/furnitures.png" id="1_2ysox"]
+[ext_resource type="Script" uid="uid://sl2rqq0usm6k" path="res://game/rooms/bedroom/window/cupboard_pad_lock_window.gd" id="1_ifrav"]
+[ext_resource type="Theme" uid="uid://btpp4jwtg0cw4" path="res://game/ui/pixel_theme.tres" id="3_a7lu7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjoha"]
+bg_color = Color(0.35021618, 0.69061744, 0.2925616, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbj6w"]
+bg_color = Color(0.38328293, 0.014555612, 0.0656825, 1)
+
+[node name="CupboardPadLockWindow" type="Node2D" unique_id=1764571701]
+script = ExtResource("1_ifrav")
+metadata/_edit_vertical_guides_ = [40.0, 84.0]
+
+[node name="Furnitures" type="Sprite2D" parent="." unique_id=1647812912]
+position = Vector2(137, 134)
+scale = Vector2(5, 5)
+texture = ExtResource("1_2ysox")
+region_enabled = true
+region_rect = Rect2(392, 116, 120, 124)
+
+[node name="Control" type="Control" parent="." unique_id=1869844042]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 73.0
+offset_top = 68.0
+offset_right = 113.0
+offset_bottom = 108.0
+theme = ExtResource("3_a7lu7")
+
+[node name="GridContainer" type="GridContainer" parent="Control" unique_id=703027364]
+layout_mode = 0
+offset_left = -33.0
+offset_top = -27.0
+offset_right = 33.0
+offset_bottom = 17.0
+theme = ExtResource("3_a7lu7")
+columns = 3
+
+[node name="Button" type="Button" parent="Control/GridContainer" unique_id=1724727765]
+layout_mode = 2
+text = "1"
+
+[node name="Button2" type="Button" parent="Control/GridContainer" unique_id=727054472]
+layout_mode = 2
+text = "2"
+
+[node name="Button3" type="Button" parent="Control/GridContainer" unique_id=237026363]
+layout_mode = 2
+text = "3
+"
+
+[node name="Button4" type="Button" parent="Control/GridContainer" unique_id=1667536254]
+layout_mode = 2
+text = "4"
+
+[node name="Button5" type="Button" parent="Control/GridContainer" unique_id=2032028050]
+layout_mode = 2
+text = "5"
+
+[node name="Button6" type="Button" parent="Control/GridContainer" unique_id=1821095781]
+layout_mode = 2
+text = "6"
+
+[node name="Button7" type="Button" parent="Control/GridContainer" unique_id=1402986097]
+layout_mode = 2
+text = "7
+"
+
+[node name="Button8" type="Button" parent="Control/GridContainer" unique_id=1565823367]
+layout_mode = 2
+text = "8"
+
+[node name="Button9" type="Button" parent="Control/GridContainer" unique_id=1842209048]
+layout_mode = 2
+text = "9"
+
+[node name="Button10" type="Button" parent="Control/GridContainer" unique_id=471365469]
+layout_mode = 2
+text = "A"
+
+[node name="Button11" type="Button" parent="Control/GridContainer" unique_id=1187365456]
+layout_mode = 2
+text = "0"
+
+[node name="Button12" type="Button" parent="Control/GridContainer" unique_id=834015795]
+layout_mode = 2
+text = "B"
+
+[node name="Panel" type="Panel" parent="Control" unique_id=1525286374]
+layout_mode = 0
+offset_left = -33.0
+offset_top = -53.0
+offset_right = 11.0
+offset_bottom = -40.0
+theme = ExtResource("3_a7lu7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjoha")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Control/Panel" unique_id=1825253146]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 40.0
+offset_bottom = 13.0
+theme = ExtResource("3_a7lu7")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "AB1630"
+horizontal_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="ValidButton" type="Button" parent="Control" unique_id=2046182009]
+layout_mode = 0
+offset_left = -17.0
+offset_top = 54.0
+offset_right = 11.0
+offset_bottom = 70.0
+text = "OK"
+
+[node name="ClearButton" type="Button" parent="Control" unique_id=1308210572]
+layout_mode = 0
+offset_left = -33.0
+offset_top = 54.0
+offset_right = -21.0
+offset_bottom = 70.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_lbj6w")
+text = " "
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1408324376]
+position = Vector2(73, 68)

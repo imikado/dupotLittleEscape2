@@ -4,10 +4,13 @@ extends FurnitureAbstract
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	
+	set_id("cupboard")
 
 	pass # Replace with function body.
 
 func open_padlock_window():
+	GlobalGame.open_window(GlobalGame.WINDOW_BEDROOM_CUPBOARD_PADLOCK)
 	pass
 
 func close_doors():
