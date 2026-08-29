@@ -12,10 +12,13 @@ const WINDOW_BEDROOM_CUPBOARD_PADLOCK="window_bedroom_cupboard_padlock"
 const STATE_BEDROOM_CUPBOARD="bedroom_cupboard"
 const STATE_LOCKED="locked"
 
+const ASYNC_EVENT_BEDROOM_CUPBOARD_OPEN="bedroom_cupboard_open"
+
 var _current_room: String
 
 var _state_value_list: Dictionary = {}
 
+var _pending_event:String=""
 
 var _room_dict = {
 	ROOM_BEDROOM: "res://game/rooms/bedroom.tscn"
@@ -80,3 +83,12 @@ func open_item_show_with_name(item_id: String):
 	
 func get_item_show_path() -> String:
 	return _item_show_path
+
+func has_pending_event(event:String)->bool:
+	if _pending_event==event:
+		_pending_event=""
+		return true
+	return false
+
+func set_pending_event(event:String):
+	_pending_event=event

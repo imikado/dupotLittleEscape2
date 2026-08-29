@@ -1,10 +1,10 @@
 extends FurnitureAbstract
 
-const ANIM_CLOSED="closed"
-const ANIM_OPENED="opened"
-const ANIM_OPEN="open"
+const ANIM_CLOSED = "closed"
+const ANIM_OPENED = "opened"
+const ANIM_OPEN = "open"
 
-@onready var animationPlayer:AnimationPlayer=$AnimationPlayer
+@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,13 +12,14 @@ func _ready() -> void:
 	
 	set_id("cupboard")
 	
-	if is_opened():
+	if GlobalGame.has_pending_event(GlobalGame.ASYNC_EVENT_BEDROOM_CUPBOARD_OPEN):
+		animationPlayer.play(ANIM_OPEN)
+	elif is_state_opened():
 		animationPlayer.play(ANIM_OPENED)
 	else:
 		animationPlayer.play(ANIM_CLOSED)
 	
 		
-
 	pass # Replace with function body.
 
 func open_padlock_window():
@@ -26,16 +27,18 @@ func open_padlock_window():
 	pass
 
 func close_doors():
+	animationPlayer.play_backwards("open")
+	
 	pass
 
 func on_action_selected(action: String) -> void:
 	if action == GlobalPlayer.ACTION_OPEN:
-		if is_opened():
+		if is_state_opened():
 			player_say('Cupboard already opened')
 			return
 		open_padlock_window()
 	elif action == GlobalPlayer.ACTION_CLOSE:
-		if not is_opened():
+		if not is_state_opened():
 			player_say('Cupboard already closed')
 			return
 

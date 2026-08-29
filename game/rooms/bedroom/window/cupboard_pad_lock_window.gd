@@ -1,21 +1,21 @@
 extends FurnitureAbstract
 
 
-@onready var grid:GridContainer=$Control/GridContainer
+@onready var grid: GridContainer = $Control/GridContainer
 
-@onready var labelCode:Label=$Control/Panel/Label
+@onready var labelCode: Label = $Control/Panel/Label
 
-@onready var clearButton:Button=$Control/ClearButton
-@onready var validButton:Button=$Control/ValidButton
+@onready var clearButton: Button = $Control/ClearButton
+@onready var validButton: Button = $Control/ValidButton
 
-@onready var panelCode:Panel=$Control/Panel
+@onready var panelCode: Panel = $Control/Panel
 
-@onready var closeButtom:Button=$Control/CloseButton
+@onready var closeButtom: Button = $Control/CloseButton
 
-const PLACEHOLDER="______"
-const PASSWORD="AB1630"
+const PLACEHOLDER = "______"
+const PASSWORD = "AB1630"
 
-var code:String=""
+var code: String = ""
 
 var tween: Tween
 
@@ -36,14 +36,14 @@ func _ready() -> void:
 	reset_code()
 	
 	for btn_loop in [
-		"1","2","3",
-		"4","5","6",
-		"7","8","9",
-		"A","0","B"
+		"1", "2", "3",
+		"4", "5", "6",
+		"7", "8", "9",
+		"A", "0", "B"
 	]:
-		var new_btn=Button.new()
-		new_btn.text=btn_loop
-		var padding:=0
+		var new_btn = Button.new()
+		new_btn.text = btn_loop
+		var padding := 0
 		new_btn.add_theme_font_size_override("font_size", 4)
 		new_btn.add_theme_constant_override("margin_left", padding)
 		new_btn.add_theme_constant_override("margin_top", padding)
@@ -53,18 +53,19 @@ func _ready() -> void:
 		grid.add_child(new_btn)
 	pass # Replace with function body.
 
-func press_button(text:String):
-	code+=text
-	labelCode.text=(code+PLACEHOLDER).substr(0,6)
+func press_button(text: String):
+	code += text
+	labelCode.text = (code + PLACEHOLDER).substr(0, 6)
 	
 func reset_code():
-	code=""
-	labelCode.text=PLACEHOLDER
+	code = ""
+	labelCode.text = PLACEHOLDER
 	
 func check_code():
-	if code==PASSWORD:
-		set_state_value(STATE_LOCKED,STATE_NO)
-		set_state_value(STATE_OPENED,STATE_YES)
+	if code == PASSWORD:
+		set_state_unlocked()
+		set_state_opened()
+		GlobalGame.set_pending_event(GlobalGame.ASYNC_EVENT_BEDROOM_CUPBOARD_OPEN)
 		
 		GlobalGame.go_to_previous_room()
 	else:
@@ -89,7 +90,7 @@ func blink_red():
 	tween.tween_property(panelCode, "self_modulate", original_color, 0.3)
 	
 	# Sécurité : garantit le retour exact à la couleur de base après les 2 cycles
-	tween.finished.connect(func(): panelCode.self_modulate = original_color, CONNECT_ONE_SHOT) 
+	tween.finished.connect(func(): panelCode.self_modulate = original_color, CONNECT_ONE_SHOT)
 
 
 func close_window():

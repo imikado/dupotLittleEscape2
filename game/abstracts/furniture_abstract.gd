@@ -78,8 +78,21 @@ func is_state_value(key: String, value: String, default: String) -> bool:
 func get_current_room() -> String:
 	return GlobalGame.get_current_room()
 
-func is_opened()->bool:
-	return	is_state_value(STATE_OPENED,STATE_YES,STATE_NO)
+func is_state_opened()->bool:
+	return is_state_value(STATE_OPENED,STATE_YES,STATE_NO)
 
-func is_locked()->bool:
+func set_state_opened():
+	set_state_value(STATE_OPENED,STATE_YES)
+
+func set_state_closed():
+	set_state_value(STATE_OPENED,STATE_NO)
+
+
+func is_state_locked()->bool:
 	return	is_state_value(STATE_LOCKED,STATE_YES,STATE_YES)
+
+func set_state_locked():
+	set_state_value(STATE_LOCKED,STATE_YES)
+
+func set_state_unlocked():
+	set_state_value(STATE_LOCKED,STATE_NO)
