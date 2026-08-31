@@ -1,8 +1,9 @@
 extends Node
 class_name FurnitureAbstract
 
-const STATE_OPENED="opened"
-const STATE_LOCKED="locked"
+const STATE_OPENED = "opened"
+const STATE_LOCKED = "locked"
+const STATE_HAS_ITEM = "hasItem"
 
 const STATE_YES = "yes"
 const STATE_NO = "no"
@@ -78,21 +79,29 @@ func is_state_value(key: String, value: String, default: String) -> bool:
 func get_current_room() -> String:
 	return GlobalGame.get_current_room()
 
-func is_state_opened()->bool:
-	return is_state_value(STATE_OPENED,STATE_YES,STATE_NO)
+#state
+func is_opened_state() -> bool:
+	return is_state_value(STATE_OPENED, STATE_YES, STATE_NO)
 
-func set_state_opened():
-	set_state_value(STATE_OPENED,STATE_YES)
+func set_opened_state():
+	set_state_value(STATE_OPENED, STATE_YES)
 
-func set_state_closed():
-	set_state_value(STATE_OPENED,STATE_NO)
+func set_closed_state():
+	set_state_value(STATE_OPENED, STATE_NO)
 
 
-func is_state_locked()->bool:
-	return	is_state_value(STATE_LOCKED,STATE_YES,STATE_YES)
+func is_locked_state() -> bool:
+	return is_state_value(STATE_LOCKED, STATE_YES, STATE_YES)
 
-func set_state_locked():
-	set_state_value(STATE_LOCKED,STATE_YES)
+func set_locked_state():
+	set_state_value(STATE_LOCKED, STATE_YES)
 
-func set_state_unlocked():
-	set_state_value(STATE_LOCKED,STATE_NO)
+func set_unlocked_state():
+	set_state_value(STATE_LOCKED, STATE_NO)
+
+func has_item_state() -> bool:
+	return is_state_value(STATE_HAS_ITEM, STATE_YES, STATE_YES)
+
+func remove_item_state():
+	set_state_value(STATE_HAS_ITEM, STATE_NO)
+	

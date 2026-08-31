@@ -1,6 +1,6 @@
 extends Control
 
-@onready var sprite: Sprite2D = $CenterContainer/Sprite2D
+@onready var sprite: TextureRect = $CenterContainer/TextureRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

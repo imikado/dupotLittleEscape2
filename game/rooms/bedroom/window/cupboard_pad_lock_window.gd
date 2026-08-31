@@ -63,8 +63,8 @@ func reset_code():
 	
 func check_code():
 	if code == PASSWORD:
-		set_state_unlocked()
-		set_state_opened()
+		set_unlocked_state()
+		set_opened_state()
 		GlobalGame.set_pending_event(GlobalGame.ASYNC_EVENT_BEDROOM_CUPBOARD_OPEN)
 		
 		GlobalGame.go_to_previous_room()

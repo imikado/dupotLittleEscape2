@@ -37,7 +37,7 @@ func _ready() -> void:
 		alarmClock.play()
 		_on_alarm_timer_timeout()
 		
-	if is_state_opened():
+	if is_opened_state():
 		var anim: String = ANIM_OPENED
 		if has_clue():
 			anim = ANIM_OPENED_WITH_CLUE
@@ -62,7 +62,7 @@ func has_clue_clock() -> bool:
 
 
 func open_drawer():
-	if is_state_opened():
+	if is_opened_state():
 		GlobalEvents.player_say.emit("Already opened")
 		return
 	var anim: String = ANIM_OPEN
@@ -72,10 +72,10 @@ func open_drawer():
 		anim = ANIM_OPEN_WITH_CLUE_CLOCK
 	
 	animationPlayer.play(anim)
-	set_state_opened()
+	set_opened_state()
 
 func close_drawer():
-	if not is_state_opened():
+	if not is_opened_state():
 		GlobalEvents.player_say.emit("Already closed")
 		return
 	var anim: String = ANIM_CLOSE
@@ -84,7 +84,7 @@ func close_drawer():
 	elif has_clue_clock():
 		anim = ANIM_CLOSE_WITH_CLUE_CLOCK
 	animationPlayer.play(anim)
-	set_state_closed()
+	set_closed_state()
 
 func on_action_selected(action: String) -> void:
 	if action == GlobalPlayer.ACTION_OPEN:
@@ -92,7 +92,7 @@ func on_action_selected(action: String) -> void:
 	elif action == GlobalPlayer.ACTION_CLOSE:
 		close_drawer()
 	elif action == GlobalPlayer.ACTION_TAKE:
-		if is_state_opened() and (has_clue() or has_clue_clock()):
+		if is_opened_state() and (has_clue() or has_clue_clock()):
 			player_say("I take this clue")
 			animationPlayer.play(ANIM_OPENED)
 			var item: String

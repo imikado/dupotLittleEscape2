@@ -45,14 +45,14 @@ func _ready() -> void:
 	GlobalEvents.player_say.connect(say)
 	GlobalEvents.refresh_inventory.connect(load_item_button_list)
 
-func set_target_position(target_position:Vector2):
-	target_mouse_position=target_position
+func set_target_position(target_position: Vector2):
+	target_mouse_position = target_position
 	
 func say(message: String):
 	panel.visible = true
 	panel_label.text = message
 	
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	panel.visible = false
 	
 
@@ -98,7 +98,7 @@ func load_item_button_list() -> void:
 	
 	for itemLoop: String in GlobalPlayer.get_item_list_in_inventory():
 		var new_button_loop: Button = Button.new()
-		new_button_loop.custom_minimum_size = Vector2(20,20)
+		new_button_loop.custom_minimum_size = Vector2(20, 20)
 		
 		new_button_loop.toggle_mode = true
 		

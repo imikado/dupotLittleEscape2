@@ -21,14 +21,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="CenterContainer" unique_id=1181955924]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=610292663]
+layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="." unique_id=152019025]
-layout_mode = 0
-offset_left = 147.0
-offset_top = 82.0
-offset_right = 173.0
-offset_bottom = 98.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_bottom = 16.0
+grow_horizontal = 0
 theme = ExtResource("1_lnr6l")
 text = "close"
 

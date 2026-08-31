@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cd8l7xs52lvc0"]
+
+[ext_resource type="Texture2D" uid="uid://d0ia4ffka6665" path="res://game/rooms/bedroom/paintingSmall.png" id="1_ai5ou"]
+[ext_resource type="Script" uid="uid://c4v75xy7u31is" path="res://game/rooms/bedroom/painting.gd" id="1_idyp6"]
+
+[node name="painting" type="Node2D" unique_id=1550004482 node_paths=PackedStringArray("_sprite", "_control")]
+script = ExtResource("1_idyp6")
+_sprite = NodePath("PaintingSmall")
+_control = NodePath("Control")
+
+[node name="PaintingSmall" type="Sprite2D" parent="." unique_id=536182545]
+position = Vector2(32.000008, 36.000004)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ai5ou")
+
+[node name="Control" type="Control" parent="." unique_id=1904604437]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 62.0
+offset_bottom = 68.0

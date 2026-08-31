@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://boat3h7ktttq5" path="res://game/rooms/bedroom/cupboard.tscn" id="4_gc77d"]
 [ext_resource type="PackedScene" uid="uid://cscfcqbbxuri8" path="res://game/rooms/shared/door.tscn" id="4_mokrw"]
 [ext_resource type="PackedScene" uid="uid://dpiojq37ufg3k" path="res://game/actors/player/player.tscn" id="6_rvnao"]
+[ext_resource type="PackedScene" uid="uid://cd8l7xs52lvc0" path="res://game/rooms/bedroom/painting.tscn" id="9_puh2o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mxlwq"]
 texture = ExtResource("1_rvnao")
@@ -70,7 +71,6 @@ position = Vector2(-349, 65)
 
 [node name="BedsideTable" parent="furnitures" unique_id=1810283172 instance=ExtResource("3_a4oly")]
 position = Vector2(-397, 64)
-has_clue = true
 
 [node name="BedsideTable2" parent="furnitures" unique_id=540798414 instance=ExtResource("3_a4oly")]
 position = Vector2(-255, 64)
@@ -78,6 +78,9 @@ has_alarm_clock = true
 
 [node name="Cupboard" parent="furnitures" unique_id=1262327595 instance=ExtResource("4_gc77d")]
 position = Vector2(-131, 25)
+
+[node name="painting" parent="furnitures" unique_id=1550004482 instance=ExtResource("9_puh2o")]
+position = Vector2(-359, -32)
 
 [node name="Player" parent="." unique_id=1969420018 instance=ExtResource("6_rvnao")]
 position = Vector2(136, 272)
