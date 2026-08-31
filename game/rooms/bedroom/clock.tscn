@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b004v3pau5f7h"]
+
+[ext_resource type="Script" uid="uid://byx86pf36lgvl" path="res://game/rooms/bedroom/clock.gd" id="1_0ta7s"]
+[ext_resource type="Texture2D" uid="uid://dyn3gua2osgq6" path="res://game/rooms/bedroom/furnitures.png" id="2_tt480"]
+
+[node name="Clock" type="Node2D" unique_id=1725119459 node_paths=PackedStringArray("_sprite", "_control")]
+script = ExtResource("1_0ta7s")
+_sprite = NodePath("Sprite2D")
+_control = NodePath("Control")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1127819943]
+position = Vector2(12, 14)
+texture = ExtResource("2_tt480")
+region_enabled = true
+region_rect = Rect2(240, 128, 48, 32)
+
+[node name="Control" type="Control" parent="." unique_id=1641017444]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 29.0
+offset_bottom = 27.0

@@ -13,7 +13,7 @@ extends FurnitureAbstract
 @onready var closeButtom: Button = $Control/CloseButton
 
 const PLACEHOLDER = "______"
-const PASSWORD = "AB1630"
+const PASSWORD = "BA1530"
 
 var code: String = ""
 

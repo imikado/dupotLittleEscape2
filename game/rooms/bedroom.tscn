@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cscfcqbbxuri8" path="res://game/rooms/shared/door.tscn" id="4_mokrw"]
 [ext_resource type="PackedScene" uid="uid://dpiojq37ufg3k" path="res://game/actors/player/player.tscn" id="6_rvnao"]
 [ext_resource type="PackedScene" uid="uid://cd8l7xs52lvc0" path="res://game/rooms/bedroom/painting.tscn" id="9_puh2o"]
+[ext_resource type="PackedScene" uid="uid://b004v3pau5f7h" path="res://game/rooms/bedroom/clock.tscn" id="10_n45ae"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mxlwq"]
 texture = ExtResource("1_rvnao")
@@ -80,10 +81,13 @@ has_alarm_clock = true
 position = Vector2(-131, 25)
 
 [node name="painting" parent="furnitures" unique_id=1550004482 instance=ExtResource("9_puh2o")]
-position = Vector2(-359, -32)
+position = Vector2(-253, 9)
+
+[node name="Clock" parent="furnitures" unique_id=1725119459 instance=ExtResource("10_n45ae")]
+position = Vector2(-343, 0)
 
 [node name="Player" parent="." unique_id=1969420018 instance=ExtResource("6_rvnao")]
-position = Vector2(136, 272)
+position = Vector2(50, 233)
 action_list = Dictionary[String, bool]({
 "action_close": true,
 "action_observe": true,
