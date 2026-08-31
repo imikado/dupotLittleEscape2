@@ -139,8 +139,10 @@ shape = SubResource("RectangleShape2D_em52k")
 [node name="HUD" type="Control" parent="." unique_id=989740455]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 2.0
+offset_top = 139.0
+offset_right = 320.0
+offset_bottom = 180.0
 theme = SubResource("Theme_28fbu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="HUD" unique_id=1396947037]

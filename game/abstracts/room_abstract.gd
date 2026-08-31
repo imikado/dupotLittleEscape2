@@ -33,8 +33,8 @@ func start_blinking():
 	
 	if not _ground or not GlobalPlayer.is_current_action_walkable():
 		return
-			
 	stop_blinking()
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 	
 	selection_tween = create_tween().set_loops()
 	
@@ -42,6 +42,8 @@ func start_blinking():
 	selection_tween.tween_property(_ground, "modulate", Color.WHITE, 0.3)
 
 func stop_blinking():	
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
 	if selection_tween and selection_tween.is_running():
 		selection_tween.kill()
 	if _ground:

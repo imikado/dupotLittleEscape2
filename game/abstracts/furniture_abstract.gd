@@ -41,16 +41,17 @@ func on_control_mouse_clicked(event: InputEvent) -> void:
 func start_blinking():
 	if not _control or not GlobalPlayer.is_current_action_selectable():
 		return
-			
-	stop_blinking()
-	
-	# Création du Tween en boucle
+	#stop_blinking()
+	_control.mouse_default_cursor_shape=Control.CURSOR_POINTING_HAND
+				
 	selection_tween = create_tween().set_loops()
 	
 	selection_tween.tween_property(_sprite, "modulate", Color.GRAY, 0.6)
 	selection_tween.tween_property(_sprite, "modulate", Color.WHITE, 0.3)
 
 func stop_blinking():
+	_control.mouse_default_cursor_shape=Control.CURSOR_ARROW
+
 	if selection_tween and selection_tween.is_running():
 		selection_tween.kill()
 	if _sprite:
