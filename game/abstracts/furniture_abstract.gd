@@ -58,10 +58,10 @@ func stop_blinking():
 		_sprite.modulate = Color.WHITE
 	
 func on_action_selected(_action: String):
-	GlobalEvents.player_say.emit("I don't think so")
+	player_say("I don't think so")
 
 func player_say(message: String) -> void:
-	GlobalEvents.player_say.emit(message)
+	GlobalEvents.player_say.emit(tr(message))
 	
 func set_id(id: String):
 	_id = id

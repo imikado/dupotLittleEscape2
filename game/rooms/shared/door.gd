@@ -24,7 +24,7 @@ func open_door():
 	
 func close_door():
 	if not opened:
-		GlobalEvents.player_say.emit("Already closed")
+		player_say("Already closed")
 		return
 	pass
 
@@ -33,4 +33,4 @@ func on_action_selected(action: String):
 		return open_door()
 	elif action == GlobalPlayer.ACTION_CLOSE:
 		return close_door()
-	GlobalEvents.player_say.emit("I don't think so")
+	player_say("I don't think so")

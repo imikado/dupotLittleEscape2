@@ -1,18 +1,12 @@
 extends Node
 
-const LANG_FR="fr"
-const LANG_EN="en"
+const LANG_FR = "fr"
+const LANG_EN = "en"
 
-var lang=LANG_FR
-var trad_fr_list={
-	GlobalPlayer.ACTION_CLOSE:"Fermer",
-	GlobalPlayer.ACTION_OPEN:"Ouvrir",
-	GlobalPlayer.ACTION_OBSERVE:"Observer",
-	GlobalPlayer.ACTION_TAKE:"Prendre",
-	GlobalPlayer.ACTION_USE:"Utiliser",
-	GlobalPlayer.ACTION_WALK:"Marcher"
+var langList:Dictionary={
+	0:LANG_FR,
+	1:LANG_EN
 }
 
-func translate(key:String)->String:
-	return trad_fr_list[key]
-	
+func set_lang(index:int):
+	TranslationServer.set_locale(langList[index])

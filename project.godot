@@ -27,6 +27,11 @@ GlobalEvents="*uid://68i7ua58upnw"
 GlobalPlayer="*uid://crf68ttyagj"
 GlobalGame="*uid://jtnlb331h6vx"
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://locales/translations.fr.translation", "res://locales/translations.en.translation")
+locale/fallback="fr"
+
 [display]
 
 window/size/viewport_width=320

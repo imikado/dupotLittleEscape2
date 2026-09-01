@@ -63,7 +63,7 @@ func has_clue_clock() -> bool:
 
 func open_drawer():
 	if is_opened_state():
-		GlobalEvents.player_say.emit("Already opened")
+		player_say("Already opened")
 		return
 	var anim: String = ANIM_OPEN
 	if has_clue():
@@ -76,7 +76,7 @@ func open_drawer():
 
 func close_drawer():
 	if not is_opened_state():
-		GlobalEvents.player_say.emit("Already closed")
+		player_say("Already closed")
 		return
 	var anim: String = ANIM_CLOSE
 	if has_clue():

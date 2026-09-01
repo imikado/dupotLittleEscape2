@@ -1,0 +1,19 @@
+keys,en,fr
+action_open,Open,Ouvrir
+action_close,Close,Fermer
+action_observe,Observe,Observer
+action_take,Take,Prendre
+action_use,Use,Utiliser
+action_walk,Walk,Marcher
+Play,Play,Jouer
+I don't think so,I don't think so,Je ne pense pas
+Already opened,Already opened,Déjà ouvert
+Already closed,Already closed,Déjà fermé
+The door need a key,The door need a key,La porte a besoin d'une clé
+I take this clue,I take this clue,Je prends cet indice
+It is a bedside table with a drawer ?,It is a bedside table with a drawer ?,C'est une table de chevet avec un tiroir ?
+"It is a cupboard, maybe something inside ?","It is a cupboard, maybe something inside ?","C'est une armoire, il y a peut-être quelque chose à l'intérieur ?"
+Cupboard already opened,Cupboard already opened,L'armoire est déjà ouverte
+Cupboard already closed,Cupboard already closed,L'armoire est déjà fermée
+It is a simple bed,It is a simple bed,C'est un simple lit
+On this clock it is 15:30,On this clock it is 15:30,Il est 15h30 sur cette horloge

@@ -83,7 +83,7 @@ func load_action_button_list() -> void:
 		if action_list[action_key_loop]:
 			var new_button_loop: Button = Button.new()
 			new_button_loop.toggle_mode = true
-			new_button_loop.text = GlobalI18n.translate(action_key_loop)
+			new_button_loop.text = tr(action_key_loop)
 			new_button_loop.pressed.connect(start_action.bind(action_key_loop))
 			actionGrid.add_child(new_button_loop)
 			
