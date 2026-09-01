@@ -1,0 +1,9 @@
+{
+    "godotTools.editorPath.godot4": "/home/mika/Apps/Godot_v4.6.1-stable_linux.x86_64",
+    "files.exclude": {
+        "**/*.import": true,
+        "**/*.tscn": true,
+        "**/*.gd.uid": true,
+        "**/*.tres": true,
+    }
+}
