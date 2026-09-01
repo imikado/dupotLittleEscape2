@@ -2,7 +2,7 @@ extends RoomtAbstract
 
 @onready var furniture_group = $furnitures
 
-const DEBUG = false
+const DEBUG = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

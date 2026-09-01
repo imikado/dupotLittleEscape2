@@ -87,7 +87,7 @@ position = Vector2(-253, 9)
 position = Vector2(-343, 0)
 
 [node name="Player" parent="." unique_id=1969420018 instance=ExtResource("6_rvnao")]
-position = Vector2(50, 233)
+position = Vector2(152, 272)
 action_list = Dictionary[String, bool]({
 "action_close": true,
 "action_observe": true,

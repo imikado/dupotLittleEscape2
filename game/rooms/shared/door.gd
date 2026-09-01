@@ -10,6 +10,17 @@ func _ready() -> void:
 
 	pass # Replace with function body.
 
+func start_blinking():
+	if not _control or (not GlobalPlayer.is_current_action_selectable() and not is_opened_state()):
+		return
+	#stop_blinking()
+	_control.mouse_default_cursor_shape=Control.CURSOR_POINTING_HAND
+				
+	selection_tween = create_tween().set_loops()
+	
+	selection_tween.tween_property(_sprite, "modulate", Color.GRAY, 0.6)
+	selection_tween.tween_property(_sprite, "modulate", Color.WHITE, 0.3)
+
 func open_door():
 	if opened:
 		player_say("Already opened")

@@ -31,9 +31,12 @@ func _on_area_2d_mouse_exited():
 
 func start_blinking():
 	
-	if not _ground or not GlobalPlayer.is_current_action_walkable():
+	if not _ground:
 		return
-	stop_blinking()
+	if not GlobalPlayer.is_current_action_walkable():
+		stop_blinking()
+		return
+	
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 	
 	selection_tween = create_tween().set_loops()

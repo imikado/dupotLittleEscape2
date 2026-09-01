@@ -122,6 +122,7 @@ libraries/ = SubResource("AnimationLibrary_p81wk")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2115383334]
 position = Vector2(0, -13)
+zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=154326777]
