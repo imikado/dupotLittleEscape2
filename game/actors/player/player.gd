@@ -3,7 +3,7 @@ class_name Player
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
-@export var speed: float = 2000.0
+@export var speed: float = 120.0
 @export var action_list: Dictionary[String, bool] = {
 	GlobalPlayer.ACTION_OPEN: false,
 	GlobalPlayer.ACTION_CLOSE: false,
@@ -20,19 +20,17 @@ class_name Player
 
 @onready var itemGrid: GridContainer = $HUD/CanvasLayer/Panel/MarginContainer2/ItemGridContainer
 
+@onready var navigation_agent:NavigationAgent2D=$NavigationAgent2D
+
 var button_list: Dictionary[String, Button]
 
-var target_mouse_position = Vector2.ZERO
 var physics_paused: bool = false
-
-var stopping_distance: float = 2.0
 
 var can_move = false
 
 var button_enabled: String = ''
 
 func _ready() -> void:
-	target_mouse_position = global_position
 	animationPlayer.play('idle')
 	stop_move()
 	
@@ -46,7 +44,7 @@ func _ready() -> void:
 	GlobalEvents.refresh_inventory.connect(load_item_button_list)
 
 func set_target_position(target_position: Vector2):
-	target_mouse_position = target_position
+	navigation_agent.target_position = target_position
 	
 func say(message: String):
 	panel.visible = true
@@ -57,19 +55,18 @@ func say(message: String):
 	
 
 func start_move() -> void:
-	target_mouse_position = get_global_mouse_position()
-	GlobalPlayer.set_global_position(target_mouse_position)
+	navigation_agent.target_position = get_global_mouse_position()
+	GlobalPlayer.set_global_position(navigation_agent.target_position)
 
 func stop_move():
-	target_mouse_position = global_position
+	navigation_agent.target_position = global_position
 
 
 func _physics_process(delta: float) -> void:
-	var distance_to_target: float = global_position.distance_to(target_mouse_position)
-		
-	if distance_to_target > stopping_distance:
-		var direction: Vector2 = global_position.direction_to(target_mouse_position)
-		velocity = direction * speed * delta
+	if not navigation_agent.is_navigation_finished():
+		var next_path_position: Vector2 = navigation_agent.get_next_path_position()
+		var direction: Vector2 = global_position.direction_to(next_path_position)
+		velocity = direction * speed
 	else:
 		velocity = Vector2.ZERO
 

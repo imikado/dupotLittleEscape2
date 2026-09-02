@@ -39,14 +39,15 @@ texture_region_size = Vector2i(96, 96)
 tile_size = Vector2i(96, 96)
 sources/0 = SubResource("TileSetAtlasSource_gc77d")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbj6w"]
-size = Vector2(576, 196.5)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_lbj6w"]
+vertices = PackedVector2Array(486.8672, 201.92969, 567, 203.77344, 567, 371.9375, 11.2109375, 369.04688, 394.07813, 223.9375, 14.7890625, 203, 41.257813, 203, 48.257813, 215, 72.90625, 215, 78.89844, 242.92188, 241.65625, 204, 267.40625, 204, 276.4297, 225.0625, 228.65625, 215, 194.04688, 244.0625, 209.07813, 215, 405.04688, 203, 423.6875, 203, 442.6797, 192, 471.96875, 192)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 7), PackedInt32Array(7, 8, 9, 3), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 15, 13, 12), PackedInt32Array(4, 16, 17), PackedInt32Array(3, 9, 14), PackedInt32Array(17, 18, 19, 0, 4), PackedInt32Array(4, 3, 14, 12)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(5, 193, 47, 193, 54, 205, 81, 205, 87, 233, 188, 234, 203, 205, 225, 205, 238, 194, 274, 194, 283, 215, 388, 214, 399, 193, 421, 193, 440, 182, 475, 182, 490, 192, 577, 194, 577, 382, 1, 379)])
 
-[node name="Bedroom" type="Node2D" unique_id=1964261214 node_paths=PackedStringArray("_area_2d", "_ground", "_player")]
+[node name="Bedroom" type="Node2D" unique_id=1964261214 node_paths=PackedStringArray("_ground", "_player")]
 script = ExtResource("1_vgdy4")
-_area_2d = NodePath("SelectionArea2D")
 _ground = NodePath("ground")
-_player = NodePath("Player")
+_player = NodePath("NavigationRegion2D/Player")
 
 [node name="wall" type="TileMapLayer" parent="." unique_id=702722730]
 tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAQAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAA=")
@@ -55,12 +56,6 @@ tile_set = SubResource("TileSet_mokrw")
 [node name="ground" type="TileMapLayer" parent="." unique_id=1613126909]
 tile_map_data = PackedByteArray("AAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_rvnao")
-
-[node name="SelectionArea2D" type="Area2D" parent="." unique_id=1908151008]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectionArea2D" unique_id=1655434356]
-position = Vector2(288, 289.75)
-shape = SubResource("RectangleShape2D_lbj6w")
 
 [node name="furnitures" type="Node2D" parent="." unique_id=431881280]
 position = Vector2(466, 120)
@@ -86,7 +81,10 @@ position = Vector2(-253, 9)
 [node name="Clock" parent="furnitures" unique_id=1725119459 instance=ExtResource("10_n45ae")]
 position = Vector2(-343, 0)
 
-[node name="Player" parent="." unique_id=1969420018 instance=ExtResource("6_rvnao")]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1366761892]
+navigation_polygon = SubResource("NavigationPolygon_lbj6w")
+
+[node name="Player" parent="NavigationRegion2D" unique_id=1969420018 instance=ExtResource("6_rvnao")]
 position = Vector2(152, 272)
 action_list = Dictionary[String, bool]({
 "action_close": true,

@@ -93,9 +93,6 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_em52k"]
 radius = 3.535534
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_em52k"]
-size = Vector2(28, 13)
-
 [sub_resource type="Theme" id="Theme_28fbu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j5vpa"]
@@ -128,14 +125,6 @@ position_smoothing_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=154326777]
 position = Vector2(-1.5, 15.5)
 shape = SubResource("CircleShape2D_em52k")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=399822231]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2134274284]
-position = Vector2(0, 12)
-shape = SubResource("RectangleShape2D_em52k")
 
 [node name="HUD" type="Control" parent="." unique_id=989740455]
 layout_mode = 3
@@ -233,3 +222,5 @@ theme_override_constants/margin_right = 4
 layout_mode = 2
 theme = SubResource("Theme_m3o3f")
 text = "test aaaaaaaaaa"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1298824922]
