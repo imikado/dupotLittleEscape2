@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://wbvbdhnsm4mc"]
+
+[ext_resource type="Texture2D" uid="uid://n4kjg8dwhxgs" path="res://game/rooms/living_room/furnitures.png" id="1_bh210"]
+
+[node name="tv" type="Node2D" unique_id=1763089089]
+
+[node name="Furnitures" type="Sprite2D" parent="." unique_id=1430250480]
+texture = ExtResource("1_bh210")
+region_enabled = true
+region_rect = Rect2(219, 131, 79, 52)

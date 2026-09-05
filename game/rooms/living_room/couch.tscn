@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://drqj7dyn3o34j"]
+
+[ext_resource type="Texture2D" uid="uid://n4kjg8dwhxgs" path="res://game/rooms/living_room/furnitures.png" id="1_5wto4"]
+
+[node name="Couch" type="Node2D" unique_id=2096343038]
+
+[node name="Furnitures" type="Sprite2D" parent="." unique_id=396079537]
+position = Vector2(164, 173)
+texture = ExtResource("1_5wto4")
+region_enabled = true
+region_rect = Rect2(208, 222, 101, 34)
+region_filter_clip_enabled = true

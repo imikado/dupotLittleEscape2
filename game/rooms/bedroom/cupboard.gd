@@ -34,7 +34,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func open_padlock_window():
-	GlobalGame.open_window(GlobalGame.WINDOW_BEDROOM_CUPBOARD_PADLOCK)
+	GlobalGame.open_window(GlobalGame.WINDOW.BEDROOM_CUPBOARD_PADLOCK)
 	pass
 
 func close_doors():
@@ -59,7 +59,7 @@ func on_action_selected(action: String) -> void:
 		player_say("It is a cupboard, maybe something inside ?")
 	
 	elif is_opened_state() and action==GlobalPlayer.ACTION_TAKE and has_item_state():
-		GlobalPlayer.add_item_in_inventory(GlobalGame.ITEM_BEDROOM_KEY)
+		GlobalPlayer.add_item_in_inventory(GlobalGame.ITEM.BEDROOM_KEY)
 		remove_item_state()
 		
 		animationPlayer.play(ANIM_OPENED)

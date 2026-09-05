@@ -30,8 +30,13 @@ func on_control_mouse_exited():
 	stop_blinking()
 	
 
+func is_not_clickable() -> bool:
+	if not _control or not GlobalPlayer.is_current_action_selectable():
+		return true
+	return false
+
 func on_control_mouse_clicked(event: InputEvent) -> void:
-	if not GlobalPlayer.is_current_action_selectable():
+	if is_not_clickable():
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		on_action_selected(GlobalPlayer.get_current_action())
@@ -39,10 +44,9 @@ func on_control_mouse_clicked(event: InputEvent) -> void:
 		stop_blinking()
  
 func start_blinking():
-	if not _control or not GlobalPlayer.is_current_action_selectable():
+	if is_not_clickable():
 		return
-	#stop_blinking()
-	_control.mouse_default_cursor_shape=Control.CURSOR_POINTING_HAND
+	_control.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 				
 	selection_tween = create_tween().set_loops()
 	
@@ -50,7 +54,7 @@ func start_blinking():
 	selection_tween.tween_property(_sprite, "modulate", Color.WHITE, 0.3)
 
 func stop_blinking():
-	_control.mouse_default_cursor_shape=Control.CURSOR_ARROW
+	_control.mouse_default_cursor_shape = Control.CURSOR_ARROW
 
 	if selection_tween and selection_tween.is_running():
 		selection_tween.kill()
@@ -67,7 +71,7 @@ func set_id(id: String):
 	_id = id
 
 func get_state_value(key: String, default: String) -> String:
-	if not GlobalGame.has_state_value(GlobalGame.get_current_room(), _id + key):
+	if not GlobalGame.has_state_value(get_current_room(), _id + key):
 		return default
 	return GlobalGame.get_state_value(get_current_room(), _id + key)
 
@@ -77,7 +81,7 @@ func set_state_value(key: String, value: String):
 func is_state_value(key: String, value: String, default: String) -> bool:
 	return (get_state_value(key, default) == value)
 
-func get_current_room() -> String:
+func get_current_room() -> GlobalGame.ROOM:
 	return GlobalGame.get_current_room()
 
 #state
@@ -105,4 +109,3 @@ func has_item_state() -> bool:
 
 func remove_item_state():
 	set_state_value(STATE_HAS_ITEM, STATE_NO)
-	

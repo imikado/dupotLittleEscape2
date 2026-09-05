@@ -20,7 +20,7 @@ class_name Player
 
 @onready var itemGrid: GridContainer = $HUD/CanvasLayer/Panel/MarginContainer2/ItemGridContainer
 
-@onready var navigation_agent:NavigationAgent2D=$NavigationAgent2D
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 var button_list: Dictionary[String, Button]
 
@@ -45,6 +45,7 @@ func _ready() -> void:
 
 func set_target_position(target_position: Vector2):
 	navigation_agent.target_position = target_position
+	GlobalPlayer.set_global_position(target_position)
 	
 func say(message: String):
 	panel.visible = true
@@ -55,14 +56,13 @@ func say(message: String):
 	
 
 func start_move() -> void:
-	navigation_agent.target_position = get_global_mouse_position()
-	GlobalPlayer.set_global_position(navigation_agent.target_position)
+	set_target_position(get_global_mouse_position())
 
 func stop_move():
 	navigation_agent.target_position = global_position
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not navigation_agent.is_navigation_finished():
 		var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 		var direction: Vector2 = global_position.direction_to(next_path_position)
@@ -93,7 +93,7 @@ func refresh_action_button_list() -> void:
 func load_item_button_list() -> void:
 	remove_all_children(itemGrid)
 	
-	for itemLoop: String in GlobalPlayer.get_item_list_in_inventory():
+	for itemLoop: GlobalGame.ITEM in GlobalPlayer.get_item_list_in_inventory():
 		var new_button_loop: Button = Button.new()
 		new_button_loop.custom_minimum_size = Vector2(20, 20)
 		

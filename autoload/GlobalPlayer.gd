@@ -8,7 +8,7 @@ const ACTION_TAKE = "action_take"
 const ACTION_WALK = "action_walk"
 
 
-var _inventory_list: Array[String] = []
+var _inventory_list: Array[GlobalGame.ITEM] = []
 
 var _global_position: Vector2 = Vector2.ZERO
 
@@ -34,14 +34,16 @@ func is_current_action_walkable() -> bool:
 func is_current_action_selectable() -> bool:
 	return _action_selected != ACTION_WALK and _action_selected != ''
 
-func add_item_in_inventory(item: String):
+func add_item_in_inventory(item: GlobalGame.ITEM):
+	if _inventory_list.has(item):
+		return
 	_inventory_list.append(item)
 	GlobalEvents.refresh_inventory.emit()
 	
-func has_item_in_inventory(item: String) -> bool:
+func has_item_in_inventory(item: GlobalGame.ITEM) -> bool:
 	return _inventory_list.has(item)
 
-func get_item_list_in_inventory() -> Array[String]:
+func get_item_list_in_inventory() -> Array[GlobalGame.ITEM]:
 	return _inventory_list
 
 func set_global_position(global_position: Vector2):

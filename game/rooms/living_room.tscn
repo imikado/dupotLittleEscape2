@@ -1,0 +1,96 @@
+[gd_scene format=4 uid="uid://bw3a6emcxmsl7"]
+
+[ext_resource type="Script" uid="uid://vyrnb2f4hf3e" path="res://game/rooms/living_room.gd" id="1_djuhd"]
+[ext_resource type="Texture2D" uid="uid://dp8hr3h68o46n" path="res://game/rooms/bedroom/wallBackground.png" id="1_gwirr"]
+[ext_resource type="Texture2D" uid="uid://dgsicer7vclne" path="res://game/rooms/bedroom/voidBackground.png" id="2_rpr61"]
+[ext_resource type="PackedScene" uid="uid://02yp8me6jn6q" path="res://game/rooms/living_room/bedroom_door.tscn" id="3_djuhd"]
+[ext_resource type="Texture2D" uid="uid://fcgb0g8d4tvx" path="res://game/rooms/bedroom/woodBackground.png" id="4_fjd5j"]
+[ext_resource type="PackedScene" uid="uid://dpiojq37ufg3k" path="res://game/actors/player/player.tscn" id="5_rpr61"]
+[ext_resource type="PackedScene" uid="uid://dxpbb8kwouvti" path="res://game/rooms/living_room/bathroom_door.tscn" id="6_fjd5j"]
+[ext_resource type="PackedScene" uid="uid://wbvbdhnsm4mc" path="res://game/rooms/living_room/tv.tscn" id="7_yi3sc"]
+[ext_resource type="PackedScene" uid="uid://cxumlhu0olf1d" path="res://game/rooms/living_room/little_table.tscn" id="8_s1nvy"]
+[ext_resource type="PackedScene" uid="uid://drqj7dyn3o34j" path="res://game/rooms/living_room/couch.tscn" id="10_fqhxs"]
+[ext_resource type="PackedScene" uid="uid://cqw5h7ct2yp2j" path="res://game/rooms/living_room/lunch_table.tscn" id="11_wq77j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yi3sc"]
+texture = ExtResource("1_gwirr")
+texture_region_size = Vector2i(96, 96)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1nvy"]
+texture = ExtResource("2_rpr61")
+texture_region_size = Vector2i(96, 96)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
+
+[sub_resource type="TileSet" id="TileSet_fqhxs"]
+tile_size = Vector2i(96, 96)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_yi3sc")
+sources/1 = SubResource("TileSetAtlasSource_s1nvy")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fqhxs"]
+texture = ExtResource("4_fjd5j")
+texture_region_size = Vector2i(96, 96)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qrswu"]
+tile_size = Vector2i(96, 96)
+sources/0 = SubResource("TileSetAtlasSource_fqhxs")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_lbj6w"]
+vertices = PackedVector2Array(254.6875, 313.40625, 247.67188, 204.14844, 348.9297, 205.5625, 354.67188, 290.1797, -104.78125, 207.07813, -82.63281, 186.29688, -63.40625, 207.82813, -275.3203, 368.95313, 483.6328, 204.29688, 657.65625, 209.67969, 652.3281, 365.03906, 480.65625, 287.8203, 60.21875, 206.96875, 125.92969, 207.28906, 129.32031, 308.64063, 8.65625, 209.14063, -264.6328, 204.17188, 17.601563, 175.34375, 48.109375, 176.70313)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(7, 16, 4), PackedInt32Array(15, 17, 18, 12), PackedInt32Array(6, 15, 14, 7), PackedInt32Array(10, 7, 14, 0), PackedInt32Array(11, 10, 0, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-274, 194, -108.665085, 197.00601, -82, 172, -58.85858, 197.91165, 1, 199, 10, 165, 55, 167, 67, 197, 135.60294, 197.34244, 139, 299, 244, 303, 237, 194, 358.291, 195.68848, 364, 280, 471, 278, 474, 194, 668, 200, 662, 375, -286, 379)])
+
+[node name="LivingRoom" type="Node2D" unique_id=842598005 node_paths=PackedStringArray("_ground", "_player")]
+script = ExtResource("1_djuhd")
+_ground = NodePath("ground")
+_player = NodePath("NavigationRegion2D/Player")
+
+[node name="wall" type="TileMapLayer" parent="." unique_id=1749698273]
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAQAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAAAAAAAAAAD//wAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_fqhxs")
+
+[node name="ground" type="TileMapLayer" parent="." unique_id=1649686144]
+tile_map_data = PackedByteArray("AAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAD+/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_qrswu")
+
+[node name="furnitures" type="Node2D" parent="." unique_id=458133989]
+
+[node name="bedroomDoor" parent="furnitures" unique_id=1721492027 instance=ExtResource("3_djuhd")]
+position = Vector2(41, 121)
+roomTarget = 2
+roomFrom = 3
+
+[node name="bathroomDoor" parent="furnitures" unique_id=1243304773 instance=ExtResource("6_fjd5j")]
+position = Vector2(-72, 121)
+roomTarget = 4
+roomFrom = 3
+
+[node name="tv" parent="furnitures" unique_id=1763089089 instance=ExtResource("7_yi3sc")]
+position = Vector2(182, 170)
+
+[node name="LittleTable" parent="furnitures" unique_id=2134465067 instance=ExtResource("8_s1nvy")]
+position = Vector2(187, 232)
+
+[node name="Couch" parent="furnitures" unique_id=2096343038 instance=ExtResource("10_fqhxs")]
+position = Vector2(28, 105)
+
+[node name="LunchTable" parent="furnitures" unique_id=2114176980 instance=ExtResource("11_wq77j")]
+position = Vector2(142, -14)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1867477253]
+navigation_polygon = SubResource("NavigationPolygon_lbj6w")
+
+[node name="Player" parent="NavigationRegion2D" unique_id=790882222 instance=ExtResource("5_rpr61")]
+position = Vector2(26, 204)
+action_list = Dictionary[String, bool]({
+"action_close": true,
+"action_observe": true,
+"action_open": true,
+"action_take": true,
+"action_use": true,
+"action_walk": true
+})

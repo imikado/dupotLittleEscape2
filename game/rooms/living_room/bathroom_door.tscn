@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://cscfcqbbxuri8"]
+[gd_scene format=3 uid="uid://dxpbb8kwouvti"]
 
-[ext_resource type="Script" uid="uid://dqpltn2xgmu1o" path="res://game/rooms/shared/door.gd" id="1_23odk"]
-[ext_resource type="Texture2D" uid="uid://c87porcoatpti" path="res://game/rooms/shared/bedroom_door_open.png" id="2_23odk"]
+[ext_resource type="Script" uid="uid://djvu8b3hrj0bl" path="res://game/rooms/living_room/bathroom_door.gd" id="1_dcvy2"]
+[ext_resource type="Texture2D" uid="uid://c87porcoatpti" path="res://game/rooms/shared/bedroom_door_open.png" id="1_pl87e"]
 
 [sub_resource type="Animation" id="Animation_23odk"]
 length = 0.001
@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_23odk")]
+"values": [ExtResource("1_pl87e")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -54,7 +54,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_23odk")]
+"values": [ExtResource("1_pl87e")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -94,7 +94,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_23odk")]
+"values": [ExtResource("1_pl87e")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -121,7 +121,7 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_u1fqm"]
+[sub_resource type="Animation" id="Animation_4uvh7"]
 resource_name = "opened"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -133,7 +133,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_23odk")]
+"values": [ExtResource("1_pl87e")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -160,29 +160,31 @@ tracks/2/keys = {
 "values": [4]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6grd0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dcvy2"]
 _data = {
 &"RESET": SubResource("Animation_23odk"),
 &"closed": SubResource("Animation_n35ds"),
 &"open": SubResource("Animation_6grd0"),
-&"opened": SubResource("Animation_u1fqm")
+&"opened": SubResource("Animation_4uvh7")
 }
 
-[node name="door" type="Node2D" unique_id=1373127259 node_paths=PackedStringArray("_sprite", "_control")]
-script = ExtResource("1_23odk")
+[node name="bathroomDoor" type="Node2D" unique_id=1243304773 node_paths=PackedStringArray("_sprite", "_control")]
+script = ExtResource("1_dcvy2")
+roomTarget = 1
+roomFrom = 2
 _sprite = NodePath("DoorOpen")
 _control = NodePath("Control")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=680190665]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=759519870]
 root_node = NodePath("../DoorOpen")
-libraries/ = SubResource("AnimationLibrary_6grd0")
+libraries/ = SubResource("AnimationLibrary_dcvy2")
 
-[node name="DoorOpen" type="Sprite2D" parent="." unique_id=2121184193]
+[node name="DoorOpen" type="Sprite2D" parent="." unique_id=2137762749]
 position = Vector2(24, 8)
-texture = ExtResource("2_23odk")
+texture = ExtResource("1_pl87e")
 hframes = 5
 
-[node name="Control" type="Control" parent="." unique_id=1922054912]
+[node name="Control" type="Control" parent="." unique_id=294623019]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -40.0

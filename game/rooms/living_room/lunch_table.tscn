@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cqw5h7ct2yp2j"]
+
+[ext_resource type="Texture2D" uid="uid://n4kjg8dwhxgs" path="res://game/rooms/living_room/furnitures.png" id="1_unwue"]
+
+[node name="LunchTable" type="Node2D" unique_id=2114176980]
+
+[node name="Furnitures" type="Sprite2D" parent="." unique_id=270053065]
+position = Vector2(281, 240)
+texture = ExtResource("1_unwue")
+region_enabled = true
+region_rect = Rect2(377, 148, 105, 84)

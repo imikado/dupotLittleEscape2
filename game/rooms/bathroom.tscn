@@ -1,0 +1,42 @@
+[gd_scene format=4 uid="uid://3occn5kanfxq"]
+
+[ext_resource type="Texture2D" uid="uid://dp8hr3h68o46n" path="res://game/rooms/bedroom/wallBackground.png" id="1_jlvf0"]
+[ext_resource type="Texture2D" uid="uid://dgsicer7vclne" path="res://game/rooms/bedroom/voidBackground.png" id="2_oxjui"]
+[ext_resource type="Texture2D" uid="uid://fcgb0g8d4tvx" path="res://game/rooms/bedroom/woodBackground.png" id="3_lag1s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atys7"]
+texture = ExtResource("1_jlvf0")
+texture_region_size = Vector2i(96, 96)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_egukq"]
+texture = ExtResource("2_oxjui")
+texture_region_size = Vector2i(96, 96)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
+
+[sub_resource type="TileSet" id="TileSet_jld6g"]
+tile_size = Vector2i(96, 96)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_atys7")
+sources/1 = SubResource("TileSetAtlasSource_egukq")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s4ici"]
+texture = ExtResource("3_lag1s")
+texture_region_size = Vector2i(96, 96)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cvbxk"]
+tile_size = Vector2i(96, 96)
+sources/0 = SubResource("TileSetAtlasSource_s4ici")
+
+[node name="Bathroom" type="Node2D" unique_id=191470518]
+
+[node name="wall" type="TileMapLayer" parent="." unique_id=752980884]
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAQAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAAAAAAAAAAD//wAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_jld6g")
+
+[node name="ground" type="TileMapLayer" parent="." unique_id=375355171]
+tile_map_data = PackedByteArray("AAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_cvbxk")

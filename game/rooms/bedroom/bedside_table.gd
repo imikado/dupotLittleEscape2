@@ -95,13 +95,13 @@ func on_action_selected(action: String) -> void:
 		if is_opened_state() and (has_clue() or has_clue_clock()):
 			player_say("I take this clue")
 			animationPlayer.play(ANIM_OPENED)
-			var item: String
+			var item: GlobalGame.ITEM
 			var state: String
 			if has_clue():
-				item = GlobalGame.ITEM_BEDROOM_CLUE
+				item = GlobalGame.ITEM.BEDROOM_CLUE
 				state = STATE_HAS_CLUE
 			else:
-				item = GlobalGame.ITEM_BEDROOM_CLUE_CLOCK
+				item = GlobalGame.ITEM.BEDROOM_CLUE_CLOCK
 				state = STATE_HAS_CLUE_CLOCK
 				
 			GlobalPlayer.add_item_in_inventory(item)

@@ -1,16 +1,17 @@
 extends Node2D
-class_name RoomtAbstract
+class_name RoomAbstract
 
-@export var _ground:TileMapLayer
+@export var _ground: TileMapLayer
 
-@export var _player:Player
+@export var _player: Player
 
 var selection_tween: Tween
 
+
 func _ready() -> void:
-	var saved_position:Vector2=GlobalPlayer.get_global_position()
-	if saved_position!=Vector2.ZERO:
-		_player.global_position= saved_position
+	var saved_position: Vector2 = GlobalPlayer.get_global_position()
+	if _player and saved_position != Vector2.ZERO:
+		_player.global_position = saved_position
 		_player.set_target_position(saved_position)
 
 func _unhandled_input(event: InputEvent) -> void:

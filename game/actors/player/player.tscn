@@ -109,6 +109,7 @@ region_rect = Rect2(8, 6, 68, 42)
 script = ExtResource("1_28fbu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=703813668]
+position = Vector2(0, -12)
 texture = ExtResource("3_p81wk")
 hframes = 3
 region_rect = Rect2(0, 0, 232, 340)
@@ -123,7 +124,7 @@ zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=154326777]
-position = Vector2(-1.5, 15.5)
+position = Vector2(-1.5, 3.5)
 shape = SubResource("CircleShape2D_em52k")
 
 [node name="HUD" type="Control" parent="." unique_id=989740455]
